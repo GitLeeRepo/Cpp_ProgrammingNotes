@@ -63,6 +63,8 @@ int main() {
     std::cout.imbue(std::locale("C")); // reset to default no thousand separator
     cout << setw(20) << "Min double: " << setw(26) << myDoubleMin << endl;
     cout << setw(20) << "Max double: " << setw(26) << myDoubleMax << endl;
+    return 0;
+}
 ```
 
 **Output:**
