@@ -1,6 +1,6 @@
 # Overview
 
-Notes on the c++ programming language
+Notes on the C++ programming language
 
 # Reference
 
