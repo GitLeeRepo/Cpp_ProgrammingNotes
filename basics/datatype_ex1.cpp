@@ -1,24 +1,7 @@
-# Overview
+// datatypes_ex1
+//
+// Illustrates the various data types and their limits in C++
 
-Notes on the C++ programming language
-
-# Reference
-
-* [cplusplus.com](http://www.cplusplus.com/)
-
-## YouTube
-
-* [C++ Programming](https://www.youtube.com/watch?v=Rub-JsjMhWY) - Derek Banas
-
-# Concepts and Terminology
-
-TBD
-
-# Datatypes
-
-# Basic Data Type Examples
-
-```c++
 #include <iostream>
 #include <iomanip>
 #include <limits>
@@ -42,6 +25,7 @@ int main() {
     enum color { red, green, blue};
     color myColor = blue;
 
+
     cout << "Size of int: " << sizeof(int) << endl;
     cout << "Size of long: " << sizeof(long) << endl;
     cout << "Size of double: " << sizeof(double) << endl;
@@ -63,70 +47,7 @@ int main() {
     std::cout.imbue(std::locale("C")); // reset to default no thousand separator
     cout << setw(20) << "Min double: " << setw(26) << myDoubleMin << endl;
     cout << setw(20) << "Max double: " << setw(26) << myDoubleMax << endl;
+
+
     return 0;
 }
-```
-
-**Output:**
-
-```bash
-Size of int: 4
-Size of long: 8
-Size of double: 8
-Size of char: 1
-Size of bool: 1
-Size of enum: 4
-
-          Min char:                       -128
-          Max char:                        127
- Max unsigned char:                        255
-           Min int:             -2,147,483,648
-           Max int:              2,147,483,647
-  Max Unsigned int:              4,294,967,295
-          Min long: -9,223,372,036,854,775,808
-          Max long:  9,223,372,036,854,775,807
- Max Unsigned Long: 18,446,744,073,709,551,615
-        Min double:               2.22507e-308
-        Max double:               1.79769e+308
-```
-
-# Operators and Expressions
-
-TBD
-
-# Conditionals
-
-TBD
-
-# Loops
-
-TBD
-
-# Functions
-
-TBD
-
-# Classes & Object Oriented Programming
-
-TBD
-
-# Templates
-
-TBD
-
-# Input / Output
-
-TBD
-
-# File Handling
-
-TBD
-
-# Containers & Iterators
-
-TBD
-
-# Exceptions
-
-TBD
-
