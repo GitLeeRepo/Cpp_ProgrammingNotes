@@ -238,7 +238,8 @@ Two primary string types in C++:
 int main() {
     using namespace std;
 
-    char str1[80] = "Hello, World!"; // buffer bigger than the string, it can safely be filled up to 80 chars (include null terminator)
+    char str1[80] = "Hello, World!"; // buffer bigger than the string, it can safely be filled up to 80 chars 
+                                     // (include null terminator)
     char str2[] = "Hello, World!";   // buffer (14 bytes) the same size as the string, including null terminator
     //char *str3 = "Hello, World!";  // valid in C, but C++ displays compiler warning
     char str4[80] = "";              // empty string, the first byte is set to null ('\0')
