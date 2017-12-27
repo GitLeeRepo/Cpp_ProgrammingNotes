@@ -11,7 +11,7 @@ COMMON_DIR = ../../commonlib
 COMMON_LIB = $(COMMON_DIR)/common.o
 COMMON_INCL = $(COMMON_DIR)/common.h
 
-EXE = sandbox01 datatype_ex1
+EXE = sandbox01 datatype_ex1 cout_ex1
 INCFILES = 
 LDLIBS =
 CC=g++

@@ -20,7 +20,7 @@ While much of C++ involves creating your own data types, these data types are ba
 
 Two Categories of Built-in Data Types
 
-* Fundemental Types
+* Fundamental Types
     * Integer types
     * Float types
 * Compound Types
@@ -29,7 +29,7 @@ Two Categories of Built-in Data Types
   * Structures
   * Pointers
   
-## Fundemental Data Type Sizes and Limits
+## Fundamental Data Type Sizes and Limits
 
 From the output of the program in the following section.  Shows the size in bytes of these data types and their min max limits as they are found on a 64 bit Linux system.  It also shows the number of significant digits for float and double.
 
@@ -66,7 +66,7 @@ From the output of the program in the following section.  Shows the size in byte
 long dbl sig digits:                         18
 ```
 
-## Fundemental Data Type Examples
+## Fundamental Data Type Examples
 
 ```c++
 #include <iostream>
@@ -141,7 +141,7 @@ int main() {
 
 **Output:**
 
-Refer to the **Fundemental Data Type Sizes and Limits** section above for the output of this program.
+Refer to the **Fundamental Data Type Sizes and Limits** section above for the output of this program.
 
 # Operators and Expressions
 
@@ -203,21 +203,21 @@ int main() {
     cout.imbue(locale("C")); // reset to default no thousand separator
     // explicitly set the locale
     cout.imbue(locale("en_US.UTF-8"));  // use locale thousands separator
-    cout << setw(24) << "Max int (explict): " << setw(20) << myIntMax << endl;
+    cout << setw(24) << "Max int (explicit): " << setw(20) << myIntMax << endl;
     cout.imbue(locale("C"));
 
     // save current precision
     int origPrecision = cout.precision();
 
     // set the number of significant digits to display (rounded)
-    // using both member function precision() and maniplator setprecision()
+    // using both member function precision() and manipulator setprecision()
     cout.width(24); // set cout width for next operation
     cout.precision(12); // set cout precision for next operation
     cout << "Orig double: " << setw(20) << 3.14159265359 << setw(24) <<
           "setprecision(4): " << setprecision(4) << setw(12) << 3.14159265359 << endl;
 
-    // by setting cout to fixed, the following precisions settings will apply to
-    // the number of decimals on the right, rather than total signficant digits
+    // by setting cout to fixed, the following precision settings will apply to
+    // the number of decimals on the right, rather than total significant digits
     cout << fixed;
     // or cout.setf(ios::fixed, ios::floatfield);
     cout.width(24);
@@ -247,7 +247,7 @@ int main() {
  Max int (hexadecimal):             7fffffff
        Max int (octal):          17777777777
 Max int (sys settings):        2,147,483,647
-     Max int (explict):        2,147,483,647
+     Max int (explicit):        2,147,483,647
            Orig double:        3.14159265359       setprecision(4):        3.142
    Orig double (fixed):       3.141592653590       setprecision(4):       3.1416
             Scientific:   1.844674407371e+19
