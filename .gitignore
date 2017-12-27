@@ -34,6 +34,7 @@
 array_ex?
 cout_ex?
 datatype_ex?
+string_ex?
 
 # swap files
 *.swp
