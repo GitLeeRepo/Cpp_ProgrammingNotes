@@ -31,11 +31,11 @@
 *.out
 *.app
 
+array_ex?
 cout_ex?
 datatype_ex?
 
 # swap files
-
 *.swp
 
 # input/output data files
@@ -43,5 +43,4 @@ out*.txt
 in*.txt
 
 # excluded cpp files and their executables
-
 sandbox*
