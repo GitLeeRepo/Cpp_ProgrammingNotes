@@ -28,7 +28,20 @@ Two Categories of Built-in Data Types
   * Strings
   * Structures
   * Pointers
-  
+
+## Numeric Initializations and assignments
+
+C++ is fairly lenient in allowing assignments from one numeric type to another.  When assigning to a larger data type (myLong = myInt) there shouldn't be any issues, but doing the opposite (myInt = myLong) could result in an invalid result if myLong is larger than what can fit in an int.  Also, when assigning a float/double to an integer type, the fractional portion will be truncated (myInt = 5.9 results in 5)
+
+The C++11 standard introduced **list initialization** notation, that is not only for lists, but can be used to assign individual values in the initialization, using **braces** for the notation.  It has the advantage that it will not allows **narrowing** of values, i.e., it won't allow a value that is t0o big, or potentially too big to be assigned.  For example:
+
+```c++
+char mychar = {64};  // allowed since it fits in a char
+char mychar2 = {512};  // compile error, not allowed since it is too big for a char
+int x = 5;
+char mychar3 = {x}; // compile warning, since x is an integer with the potential of being too big
+```
+
 ## Fundamental Data Type Sizes and Limits
 
 From the output of the program in the following section.  Shows the size in bytes of these data types and their min max limits as they are found on a 64 bit Linux system.  It also shows the number of significant digits for float and double.
