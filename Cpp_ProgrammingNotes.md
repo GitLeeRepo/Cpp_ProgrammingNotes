@@ -155,6 +155,27 @@ int main() {
 **Output:**
 
 Refer to the **Fundamental Data Type Sizes and Limits** section above for the output of this program.
+## Type Casting
+
+All three of the following methods are legal ways to cast from one numeric type to another:
+
+```c++
+    int myInt1 = (int) 44.7;
+    int myInt2 = int (44.7);
+    int myInt3 = static_cast<int>(44.7);
+```
+Note that the **static_cast** tends to be more restrictive.
+
+## Auto Declarations
+
+The **C++11** standard introduced **auto** declarations in which the variable type is determined by the value assigned.
+
+```c++
+auto w = 512;        // w becomes an integer
+auto x = 123456789L; // x becomes a long
+auto y = 44.5;       // y becomes a double
+auto z = 1.8e18L;    // z becomes a long double 
+```
 
 # Operators and Expressions
 
