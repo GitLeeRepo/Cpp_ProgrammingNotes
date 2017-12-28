@@ -6,6 +6,10 @@ Notes on the C++ programming language
 
 * [cplusplus.com](http://www.cplusplus.com/)
 
+## Books
+
+* [C++ Programming Language 4th Edition](https://www.amazon.com/C-Programming-Language-Bjarne-Stroustrup-ebook/dp/B00DUW4BMS) by Bjarne Stroustrup 
+
 ## YouTube
 
 * [C++ Programming](https://www.youtube.com/watch?v=Rub-JsjMhWY) - Derek Banas
