@@ -415,6 +415,18 @@ int main() {
 }
 ```
 
+## Pointers and Pointer Arithmetic
+
+**nullptr** should be used in comparisons rather than the older **NULL** when making comparisons or assigments since it makes it clear that you are dealing with pointer values rather than integer.
+
+```c++
+int* ptr = nullptr;
+...
+if (ptr == nullptr)
+   return 0;
+```
+
+**References vs pointers** - a reference is similar to a pointer but you don't need to dereference the variable with a **\*** prefix
 # Operators and Expressions
 
 TBD
@@ -425,7 +437,27 @@ TBD
 
 # Loops
 
-TBD
+## Standard for Statement
+
+```c++
+    int ar[3] = { 1, 2, 3 };
+
+    for (auto i = 0; i < 3; i++)
+        cout << ar[i] << endl;
+```
+
+## Range-for Statements
+
+Range-for statements allow you to iterate over a list:
+
+```c++
+    int ar[] = { 1, 2, 3 };
+
+    for (auto x: ar)
+        cout << x << endl;
+    for (auto x: { 3, 2, 1 })
+        cout << x << endl;
+```
 
 # Functions
 
