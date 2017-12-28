@@ -361,7 +361,7 @@ int main() {
 
 ## Compound Type - Structure
 
-The following example shows the creation of a static structure on the stack, along with an array of dynamically allocated structures stored on the heap.  It also uses an enum.
+The following example shows the creation of a structure on the stack, along with an array of dynamically allocated structures stored on the heap.  It also uses an enum.  Note that the **. (dot)** is used to access the non-dynamic structure and the **->** operator is used to access members dynamically allocated.
 
 ```c++
 #include <iostream>
@@ -440,6 +440,14 @@ A reference is similar to a pointer but you don't need to dereference the variab
     
     for (; *ptr != 3; ptr++ )
         cout << *ptr << endl;
+```
+
+# Memory Allocation
+
+C++ uses the **new** operator to allocate memory from the **free store**, a.k.a, the **heap** or more generally **dynamic memory**.  The **new** operator should generally be used to allocate memory rather than C's **maloc**.
+
+```c++
+    int *p = new int[5];  // allocate an integer array on the heap
 ```
 
 # Operators and Expressions
