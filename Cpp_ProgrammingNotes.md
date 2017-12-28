@@ -307,6 +307,10 @@ TBD
 
 ## cin Input
 
+* **cin >> varName** - reads a word (delimited by a white space character).  If more than one word is entered the additional words remain in the input queue and will be picked up by the next input, which is normally not what is desired.
+* **cin.getline()** - reads an entire line of input up to the newline, it then discards the newline.
+* **cin.get()** - reads an entire line of input up to the newline, but the newline will remain in the input buffer and will be read in by the next input statement.
+
 ### cin.getline Example
 
 ```c++
