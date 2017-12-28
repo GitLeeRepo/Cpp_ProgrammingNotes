@@ -417,7 +417,9 @@ int main() {
 
 ## Pointers and Pointer Arithmetic
 
-**nullptr** should be used in comparisons rather than the older **NULL** when making comparisons or assigments since it makes it clear that you are dealing with pointer values rather than integer.
+### nullptr
+
+A  **nullptr** should be used in comparisons rather than the older **NULL** when making comparisons or assigments since it makes it clear that you are dealing with pointer values rather than integer.
 
 ```c++
 int* ptr = nullptr;
@@ -426,7 +428,20 @@ if (ptr == nullptr)
    return 0;
 ```
 
-**References vs pointers** - a reference is similar to a pointer but you don't need to dereference the variable with a **\*** prefix
+### References vs Pointers
+
+A reference is similar to a pointer but you don't need to dereference the variable with a **\*** prefix
+
+### Pointer Arithmetic using Increment Operator
+
+```c++
+    int ar[] = { 1, 2, 3 };
+    int* ptr = ar;
+    
+    for (; *ptr != 3; ptr++ )
+        cout << *ptr << endl;
+```
+
 # Operators and Expressions
 
 TBD
@@ -457,6 +472,18 @@ Range-for statements allow you to iterate over a list:
         cout << x << endl;
     for (auto x: { 3, 2, 1 })
         cout << x << endl;
+```
+
+## for Statement using Pointer Arithmetic
+
+Using the increment operator to traverse through the elements of an array pointer.  Note, for loops don't always need an initializer.
+
+```c++
+    int ar[] = { 1, 2, 3 };
+    int* ptr = ar;
+    
+    for (; *ptr != 3; ptr++ )
+        cout << *ptr << endl;
 ```
 
 # Functions
