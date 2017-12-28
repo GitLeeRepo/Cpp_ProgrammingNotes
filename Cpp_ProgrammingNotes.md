@@ -177,7 +177,7 @@ auto y = 44.5;       // y becomes a double
 auto z = 1.8e18L;    // z becomes a long double 
 ```
 
-## Array Compound Type
+## Compound Type - Array
 
 ```c++
 #include <iostream>
@@ -222,7 +222,7 @@ int main() {
 }
 ```
 
-## String Compound Type
+## Compound Type - String
 
 Two primary string types in C++:
 * C Style strings
@@ -308,8 +308,13 @@ TBD
 ## cin Input
 
 * **cin >> varName** - reads a word (delimited by a white space character).  If more than one word is entered the additional words remain in the input queue and will be picked up by the next input, which is normally not what is desired.
-* **cin.getline()** - reads an entire line of input up to the newline, it then discards the newline.
-* **cin.get()** - reads an entire line of input up to the newline, but the newline will remain in the input buffer and will be read in by the next input statement.  You can consume the extra newline by chaining on an additional get(), for example, **cin.get(name, 20).get()**
+
+For C style strings:
+* **cin.getline(str, size)** - reads an entire line of input up to the newline, it then discards the newline.
+* **cin.get(str, size)** - reads an entire line of input up to the newline, but the newline will remain in the input buffer and will be read in by the next input statement.  You can consume the extra newline by chaining on an additional get(), for example, **cin.get(name, 20).get()**
+
+For string classes:
+* **getline(cin, str)** - like cin.getline() in that it gets the string up to the newline, but with string classes it is not necessary to enter a size since they will automatically resize to whatever is needed.
 
 ### cin.getline Example
 
