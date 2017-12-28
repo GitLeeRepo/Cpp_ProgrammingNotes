@@ -33,8 +33,11 @@
 
 array_ex?
 cin_ex?
+class_ex?
 cout_ex?
 datatype_ex?
+module_ex?
+module_ex??
 string_ex?
 struct_ex?
 

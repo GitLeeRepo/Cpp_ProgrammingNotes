@@ -423,7 +423,7 @@ int main() {
 
 ### nullptr
 
-A  **nullptr** should be used in comparisons rather than the older **NULL** when making comparisons or assigments since it makes it clear that you are dealing with pointer values rather than integer.
+A  **nullptr** should be used in comparisons rather than the older **NULL** when making comparisons or assignments since it makes it clear that you are dealing with pointer values rather than integer.
 
 ```c++
 int* ptr = nullptr;
@@ -448,7 +448,7 @@ A reference is similar to a pointer but you don't need to dereference the variab
 
 # Memory Allocation
 
-C++ uses the **new** operator to allocate memory from the **free store**, a.k.a, the **heap** or more generally **dynamic memory**.  The **new** operator should generally be used to allocate memory rather than C's **maloc**.
+C++ uses the **new** operator to allocate memory from the **free store**, a.k.a, the **heap** or more generally **dynamic memory**.  The **new** operator should generally be used to allocate memory rather than C's **malloc**.
 
 ```c++
     int *p = new int[5];  // allocate an integer array on the heap
