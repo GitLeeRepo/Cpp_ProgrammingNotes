@@ -504,7 +504,122 @@ TBD
 
 # Classes & Object Oriented Programming
 
-TBD
+## Example Vector Class
+
+Note: this example is based on [C++ Programming Language 4th Edition](https://www.amazon.com/C-Programming-Language-Bjarne-Stroustrup-ebook/dp/B00DUW4BMS) by Bjarne Stroustrup with some modifications by me.
+
+```c++
+#include <iostream>
+#include <cstring>
+#include <ctime>
+#include <cstdlib>
+
+class Vector {
+public:
+    // constructor - init elem & sz
+    Vector(int s) :elem{new double[s]}, sz{s} {}
+
+    //subscripting access
+    double& operator[](int i) { return elem[i]; }
+
+    int size() { return sz; }
+
+private:
+    double* elem;  // pointer to the elements
+    int sz;        // number of elements
+};
+
+int main() {
+    using namespace std;
+
+    srand(time(nullptr)); // use current time as seed
+
+    Vector v(8);
+    for (auto i = 0; i < v.size(); i++)
+        v[i] = (rand() % 100) / (double) (rand() % 100);
+
+    double sum = 0.0;
+    for (auto i = 0; i < v.size(); i++) {
+        cout.precision(5);
+        cout << v[i] << endl;
+        sum += v[i];
+    }
+    cout << "sum = " << sum << endl;
+
+    return 0;
+}
+```
+
+# Modules
+
+## Example using the Vector Class from the Prior Classes Section
+
+Note: these examples are based on [C++ Programming Language 4th Edition](https://www.amazon.com/C-Programming-Language-Bjarne-Stroustrup-ebook/dp/B00DUW4BMS) by Bjarne Stroustrup with some modifications by me.
+
+**module_ex1a.cpp** - the module with the main function
+
+```c++
+#include <iostream>
+#include <ctime>
+#include <cstdlib>
+#include "Vector.h"  // the external definition of Vector class
+
+int main() {
+    using namespace std;
+
+    srand(time(nullptr)); // use current time as seed
+    Vector v(8);
+    for (auto i = 0; i < v.size(); i++)
+        v[i] = (rand() % 100) / (double) (rand() % 100);
+
+    double sum = 0.0;
+    for (auto i = 0; i < v.size(); i++) {
+        cout.precision(5);
+        cout << v[i] << endl;
+        sum += v[i];
+    }
+    cout << "sum = " << sum << endl;
+    return 0;
+}
+```
+
+**Vector.h** - the header file that defines the Vector class
+
+```c++
+class Vector {
+public:
+    Vector(int s);
+    double& operator[](int i);
+    int size();
+private:
+    double* elem;
+    int sz;
+};
+```
+
+**module_ex1b.cpp** - the module that implements the Vector class
+
+```c++
+#include "Vector.h"
+
+// constructor - init elem & sz
+Vector::Vector(int s)
+    :elem {new double[s]}, sz{s}
+{
+}
+
+//subscripting access
+double& Vector::operator[](int i)
+{
+    return elem[i];
+}
+
+int Vector::size()
+{
+    return sz;
+}
+```
+Note how the class implementation is separated from the class definition, which is now in Vector.h
 
 # Templates
 
