@@ -36,6 +36,7 @@ cin_ex?
 cout_ex?
 datatype_ex?
 string_ex?
+struct_ex?
 
 # swap files
 *.swp
