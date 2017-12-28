@@ -281,6 +281,8 @@ int main() {
 
 ## String Class
 
+The following example shows some of the features and advantages of string classes, contrasting them with C style strings.
+
 ```c++
 #include <iostream>
 #include <iomanip>
