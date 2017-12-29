@@ -526,9 +526,17 @@ Other class concepts:
 * **implicit copy constructor** - if a copy constructor is not declared, an implicit one is created
 * **implicit default constructor** - if a default constructor is not created an implicit constructor is used, which is equivalent to a constructor with no initializers and no function body.
 * **implicit default destructor** - is created if no default destructor is declared.  It is equivalent to a destructor without a function body.  If the base class destructor is virtual, the implicit destructor will also be virtual.
+* **non-virtual functions** - this is the default for member functions that are not preceded by the **virtual** keyword or which have not overridde a virtual function in a base class (which optionally may be marked virutal or not).  Non-virtual functions can not be overridden, they can only be hidden.  They do not allow **polymorphic behavior**.
+* **overridden function qualifiers**
+  * **virtual keyword** - the function may be overridden, but it is not required (as long as there is no **=0**)
+  * **override keyword** - the function is meant to override a function in a base class (use this if you want to be explicit)
+  * **final keyword** - the function is not meant to be overridden.  Once added to a function in a class hierarchy, no further virtual functions can override, and in fact no further classes can be derived from that class.
+  * **=0** - the virtual function must be overridden
+* **polymorphic behavior** - in order to get polymorphic behavior between classes, the member functions must be virtual and the objects must be accessed through pointers or references.
 * **pure virtual function** - use the **=0** specifier on a **virtual function** definition to create a **pure virtual function**.  You can still provide a definition for a pure virtual function, just not in the class declaration, but in its absence it must be overridden.
+* **static data member** - there is a single instance of a static data member, regardless of the number of class instance.
 * **static member functions** - declared with the **static** keyword.  They don't have a **this** pointer, and cannot be **virtual**.  They are referenced by their name within the class, and with the **classname.function()** notation outside the class (note that is class name, not an implemented object name)
-* **virtual function** -a nonstatic member function can be declared as a virtual function, using the **virtual** keyword.  A virtual function can be **overridden** in a **derived class** by giving it the same name and parameter signature.  The return type is the same but doesn't have to be.  The **virtual** keyword is optional in the derived class.  Destructors can be virtual, but constructors cannot.  Virtual functions make **polymorphism** possible.
+* **virtual function** -a nonstatic member function can be declared as a virtual function, using the **virtual** keyword.  A virtual function can be **overridden** in a **derived class** by giving it the same name and parameter signature.  The return type is the same but doesn't have to be.  The **virtual** keyword is optional in the derived class.  Destructors can be virtual, but constructors cannot.  Virtual functions make **polymorphism** possible.  Where vitual functions override the base class function, non-virtual  functions do not override, they hide the base function, which does not provide polymorphic behavior.
 
 ## Resource Management through Constructors and Destructors
 
