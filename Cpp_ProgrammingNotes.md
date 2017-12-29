@@ -454,7 +454,7 @@ C++ uses the **new** operator to allocate memory from the **free store**, a.k.a,
 
 Any **new** statement should have a corresponding **delete** statement to free the memory when you are done with the object.  In addition, you should avoid, where possible, the use of **new** and **delete** statements scattered throughout code, since if these are not propertly paired you will have **memory leaks**.  It is a much better practice to put these allocation/deallocation statements in class **constructors and destructors**, since this is much more reliable in that the **destructor** will automatically be called when the object goes out of scope.
 
-Here is an example of pairing **new** and **delete** operations:
+Here is an example of pairing **new** and **delete** operations (refer to the **Classes** section for examples that use the preferred way of handling this in constructors and destructors):
 
 ```c++
     int *p = new int[2];
@@ -514,11 +514,20 @@ TBD
 
 # Classes & Object Oriented Programming
 
+Three important types of class concepts:
+* **Concrete classes** - smaller classes which contain their own data (as opposed to pointers to other data).  They are closer in representation to built-in data types, and are typically allocated statically or on the stack.
+* **Abstract classes** - provide interfaces to data and methods rather than implementations them.  They are key in providing a base from which other classes can be derived that provide the implementation, doing so in an abstract way that provides the basis for **polymorphic** behaviors.  They provide **virtual functions** that can, and are often required, to be **overriden** by **inheriting** classes.  They are allocated dynamically and access through references and pointers.
+* **Hierarchial classes**  - an ordered hierarchy of **derived classes** inheriting from **base classes**, often with an **abstract** class or classes at the lowest level.  They provide **is a** relationships, a dog is an animal, and an animal is a life form, or a square is a rectangle, and a rectangle is a shape.  They are typically allocated dynamically being accessed through references and pointers, allowing for polymorphic behaviors, assuming the appropriate class hierarchy design.
+
+## Resource Management through Constructors and Destructors
+
+As mentioned previously in the Memory Allocation and Deallocation section, classes with their **constructors** and **destructors** provide a means of controlling the allocation and deallocation of resources such as memory.  These type of operations are best handled through this mechanism, as opposed to outside the class hierarch in procedural code, because you can more consistently ensure that an object allocated with **new** will be deallocated with **delete**.  A key part of this is that the **destructors** are automatically called when the object starts to go out of scope.
+
 ## Example Vector Class
 
 Note: this example is based on [C++ Programming Language 4th Edition](https://www.amazon.com/C-Programming-Language-Bjarne-Stroustrup-ebook/dp/B00DUW4BMS) by Bjarne Stroustrup with some modifications by me.  Since the C++ standard library provides its own vector class that should be used when vectors are needed.  The Vector class here and in other examples is only used for illustrating class development and other techniques. 
 
-Note the use of two different **constructors**, one of which allows the Vector to be initialized from a list, **Vector v2 = { 1.1, 2.2, 3,3, 4.4, 5.5 }**.  Also note the inclusion of the **~Vector destructor**.  This is important, in that any class constructors that allocate memory with **new** should be paired with a **destructor** to free the memory.  It is important that this memory allocation and deallocation takes place in the class itself, rather than outside the class in main(), since it can be handled much more reliably and automatically in the class, rather than having scattered **new** statements that may or may not have a corresponding **delete** statement. An output statement was placed in the destructor simply to illustrate that it is automatically called at the end of main() when it goes out of scope (in this case twice, once for each inialization).
+Note the use of two different **constructors**, one of which allows the Vector to be initialized from a list, **Vector v2 = { 1.1, 2.2, 3,3, 4.4, 5.5 }** by using **std::initializer_list**.  Also note the inclusion of the **~Vector destructor**.  This is important, in that any class constructors that allocate memory with **new** should be paired with a **destructor** to free the memory.  It is important that this memory allocation and deallocation takes place in the class itself, rather than outside the class in main(), since it can be handled much more reliably and automatically in the class, rather than having scattered **new** statements that may or may not have a corresponding **delete** statement. An output statement was placed in the destructor simply to illustrate that it is automatically called at the end of main() when it goes out of scope (in this case twice, once for each inialization).
 
 ```c++
 #include <iostream>
@@ -815,7 +824,7 @@ TBD
 
 # Containers & Iterators
 
-TBD
+A container is an object that holds a collection of elements, such as a vector or a list.
 
 # Exceptions
 
