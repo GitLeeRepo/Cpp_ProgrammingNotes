@@ -11,7 +11,8 @@ COMMON_DIR = ../../commonlib
 COMMON_LIB = $(COMMON_DIR)/common.o
 COMMON_INCL = $(COMMON_DIR)/common.h
 
-EXE = sandbox01 datatype_ex1 cout_ex1 array_ex1 string_ex1 string_ex2 cin_ex1 struct_ex1 class_ex1 
+EXE = sandbox01 datatype_ex1 cout_ex1 array_ex1 string_ex1 string_ex2 cin_ex1 \
+      struct_ex1 class_ex1 except_ex1
 EXE2 = module_ex1a
 INCFILES =
 INCFILES2 = Vector.h

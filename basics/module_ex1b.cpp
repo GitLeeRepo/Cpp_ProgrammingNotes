@@ -5,6 +5,7 @@
 // by Bjarne Stroustrup with modifications by TK.  Refer to module_ex1a.cpp
 // for the main() function which uses this
 
+#include <stdexcept>
 #include "Vector.h"
 namespace tlk {
 
@@ -16,7 +17,9 @@ namespace tlk {
 
     //subscripting access
     double& Vector::operator[](int i)
-    { 
+    {
+        if (i < 0 || size() <= i)
+            throw std::out_of_range{"Vector::operator[]"};
         return elem[i]; 
     }
 
