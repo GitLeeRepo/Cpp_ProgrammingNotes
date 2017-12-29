@@ -448,12 +448,20 @@ A reference is similar to a pointer but you don't need to dereference the variab
         cout << *ptr << endl;
 ```
 
-# Memory Allocation
+# Memory Allocation and Deallocation
 
 C++ uses the **new** operator to allocate memory from the **free store**, a.k.a, the **heap** or more generally **dynamic memory**.  The **new** operator should generally be used to allocate memory rather than C's **malloc**.
 
+Any **new** statement should have a corresponding **delete** statement to free the memory when you are done with the object.  In addition, you should avoid, where possible, the use of **new** and **delete** statements scattered throughout code, since if these are not propertly paired you will have **memory leaks**.  It is a much better practice to put these allocation/deallocation statements in class **constructors and destructors**, since this is much more reliable in that the **destructor** will automatically be called when the object goes out of scope.
+
+Here is an example of pairing **new** and **delete** operations:
+
 ```c++
-    int *p = new int[5];  // allocate an integer array on the heap
+    int *p = new int[2];
+    p[0] = 1;
+    p[1] = 2;
+    ...
+    delete[] p;
 ```
 
 # Operators and Expressions
