@@ -14,7 +14,7 @@ int main() {
 
     srand(time(nullptr)); // use current time as seed
 
-    Vector v(8);
+    tlk::Vector v(8);
     for (auto i = 0; i < v.size(); i++)
         v[i] = (rand() % 100) / (double) (rand() % 100);
 

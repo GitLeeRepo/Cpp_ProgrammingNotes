@@ -6,22 +6,23 @@
 // for the main() function which uses this
 
 #include "Vector.h"
+namespace tlk {
 
-// constructor - init elem & sz
-Vector::Vector(int s) 
-    :elem {new double[s]}, sz{s} 
-{
-}
+    // constructor - init elem & sz
+    Vector::Vector(int s) 
+        :elem {new double[s]}, sz{s} 
+    {
+    }
 
-//subscripting access
-double& Vector::operator[](int i)
-{ 
-    return elem[i]; 
-}
+    //subscripting access
+    double& Vector::operator[](int i)
+    { 
+        return elem[i]; 
+    }
 
-int Vector::size() 
-{ 
-    return sz; 
-}
+    int Vector::size() 
+    { 
+        return sz; 
+    }
 
-
+} 
