@@ -510,6 +510,8 @@ TBD
 
 Note: this example is based on [C++ Programming Language 4th Edition](https://www.amazon.com/C-Programming-Language-Bjarne-Stroustrup-ebook/dp/B00DUW4BMS) by Bjarne Stroustrup with some modifications by me.  Since the C++ standard library provides its own vector class that should be used when vectors are needed.  The Vector class here and in other examples is only used for illustrating class development and other techniques. 
 
+Note the use of two different **constructors**, one of which allows the Vector to be initialized from a list, **Vector v2 = { 1.1, 2.2, 3,3, 4.4, 5.5 }**.  Also note the inclusion of the **~Vector destructor**.  This is important, in that any class constructors that allocate memory with **new** should be paired with a **destructor** to free the memory.  It is important that this memory allocation and deallocation takes place in the class itself, rather than outside the class in main(), since it can be handled much more reliably and automatically in the class, rather than having scattered **new** statements that may or may not have a corresponding **delete** statement. An output statement was placed in the destructor simply to illustrate that it is automatically called at the end of main() when it goes out of scope (in this case twice, once for each inialization).
+
 ```c++
 #include <iostream>
 #include <cstring>
@@ -519,7 +521,21 @@ Note: this example is based on [C++ Programming Language 4th Edition](https://ww
 class Vector {
 public:
     // constructor - init elem & sz
-    Vector(int s) :elem{new double[s]}, sz{s} {}
+    Vector(int s) :elem{new double[s]}, sz{s} {
+        for (int i = 0; i < s; i++)
+            elem[i] = 0;
+    }
+
+    // constructor - initialize with list, ex., Vector v =  { 1, 2, 3 }
+    Vector(std::initializer_list<double> lst)
+        :elem{new double[lst.size()]}, sz{static_cast<int>(lst.size())} {
+        std::copy(lst.begin(), lst.end(), elem);
+    }
+    // destructor
+    ~Vector() {
+        delete[] elem;
+        std::cout << "Destructor invoked\n";
+    }
 
     //subscripting access
     double& operator[](int i) { return elem[i]; }
@@ -536,7 +552,7 @@ int main() {
 
     srand(time(nullptr)); // use current time as seed
 
-    Vector v(8);
+    Vector v(5);
     for (auto i = 0; i < v.size(); i++)
         v[i] = (rand() % 100) / (double) (rand() % 100);
 
@@ -548,8 +564,31 @@ int main() {
     }
     cout << "sum = " << sum << endl;
 
+    // initialize vector from a list
+    Vector v2 = { 1.1, 2.2, 3.3, 4.4, 5.5 };
+    for (auto i = 0; i < v2.size(); i++)
+        cout << v2[i] << endl;
+
     return 0;
 }
+```
+
+**Output:**
+
+```bash
+0.2093
+33
+0.72043
+50
+1.0833
+sum = 85.013
+1.1
+2.2
+3.3
+4.4
+5.5
+Destructor invoked
+Destructor invoked
 ```
 
 # Modules
