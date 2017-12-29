@@ -515,9 +515,20 @@ TBD
 # Classes & Object Oriented Programming
 
 Three important types of class concepts:
-* **Concrete classes** - smaller classes which contain their own data (as opposed to pointers to other data).  They are closer in representation to built-in data types, and are typically allocated statically or on the stack.
-* **Abstract classes** - provide interfaces to data and methods rather than implementations them.  They are key in providing a base from which other classes can be derived that provide the implementation, doing so in an abstract way that provides the basis for **polymorphic** behaviors.  They provide **virtual functions** that can, and are often required, to be **overriden** by **inheriting** classes.  They are allocated dynamically and access through references and pointers.
+* **Concrete classes** - smaller classes which contain their own data (as opposed to pointers to other data).  They do not contain any **pure virtual functions**, although they can override ones in a base class.  They are closer in representation to built-in data types, and are typically allocated statically or on the stack.
+* **Abstract classes** - provide interfaces to data and methods rather than implementations them.  They are key in providing a base from which other classes can be derived that provide the implementation, doing so in an abstract way that provides the basis for **polymorphic** behaviors.  They provide **virtual functions** that can, and are often required, to be **overriden** by **inheriting** classes.  An abstract class has at least one **pure virtual function**.  You cannot create an object from an abstract class, but you can reference them through references and pointers.
 * **Hierarchial classes**  - an ordered hierarchy of **derived classes** inheriting from **base classes**, often with an **abstract** class or classes at the lowest level.  They provide **is a** relationships, a dog is an animal, and an animal is a life form, or a square is a rectangle, and a rectangle is a shape.  They are typically allocated dynamically being accessed through references and pointers, allowing for polymorphic behaviors, assuming the appropriate class hierarchy design.
+
+Other class concepts:
+
+* **abstract function** - refer to **pure virtual function**. 
+* **default constructor** - a default constructor has no arguments
+* **implicit copy constructor** - if a copy constructor is not declared, an implicit one is created
+* **implicit default constructor** - if a default constructor is not created an implicit constructor is used, which is equivalent to a constructor with no initializers and no function body.
+* **implicit default destructor** - is created if no default destructor is declared.  It is equivalent to a destructor without a function body.  If the base class destructor is virtual, the implicit destructor will also be virtual.
+* **pure virtual functon** - use the **=0** specifier on a **virtual function** definition to create a **pure virtual function**.  You can still provide a definition for a pure virtual function, just not in the class declaration, but in its absensce it must be overriden.
+* **static member functions** - declared with the **static** keyword.  They don't have a **this** pointer, and cannot be **virtual**.  They are referenced by their name within the class, and with the **classname.function()** notation outside the class (note that is class name, not an implemented object name)
+* **virtual function** -a nonstatic member function can be declared as a virtual function, using the **virtual** keyword.  A virtual function can be **overriden** in a **derived class** by giving it the same name and parameter signature.  The return type is the same but doesn't have to be.  The **virtual** keyword is optional in the derived class.  Destructors can be virtual, but constructors cannot.  Virtual functions make **polymorphism** possible.
 
 ## Resource Management through Constructors and Destructors
 
