@@ -11,7 +11,21 @@
 class Vector {
 public:
     // constructor - init elem & sz
-    Vector(int s) :elem{new double[s]}, sz{s} {}
+    Vector(int s) :elem{new double[s]}, sz{s} {
+        for (int i = 0; i < s; i++)
+            elem[i] = 0;
+    }
+
+    // constructor - initialize with list, ex., Vector v =  { 1, 2, 3 }
+    Vector(std::initializer_list<double> lst) 
+        :elem{new double[lst.size()]}, sz{static_cast<int>(lst.size())} {
+        std::copy(lst.begin(), lst.end(), elem);
+    }
+    // destructor
+    ~Vector() { 
+        delete[] elem;
+        std::cout << "Destructor invoked\n"; 
+    }
 
     //subscripting access
     double& operator[](int i) { return elem[i]; }
@@ -28,7 +42,7 @@ int main() {
 
     srand(time(nullptr)); // use current time as seed
 
-    Vector v(8);
+    Vector v(5);
     for (auto i = 0; i < v.size(); i++)
         v[i] = (rand() % 100) / (double) (rand() % 100);
 
@@ -39,6 +53,11 @@ int main() {
         sum += v[i];
     }
     cout << "sum = " << sum << endl;
+
+    // initialize vector from a list
+    Vector v2 = { 1.1, 2.2, 3.3, 4.4, 5.5 };
+    for (auto i = 0; i < v2.size(); i++)
+        cout << v2[i] << endl;
 
     return 0;
 }
