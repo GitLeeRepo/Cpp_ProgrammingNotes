@@ -29,7 +29,7 @@ namespace tlk {
     }
 
     double* Vector::end() {
-        return &elem[sz-1];
+        return &elem[sz];
     }
 
     int Vector::size() 

@@ -36,7 +36,7 @@ public:
     }
 
     double* end() {
-        return &elem[sz-1];
+        return &elem[sz];
     }
 
     int size() { return sz; }
