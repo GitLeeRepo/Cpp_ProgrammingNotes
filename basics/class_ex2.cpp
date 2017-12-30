@@ -8,8 +8,16 @@
 
 using namespace std;
 
+// Animal class
 class Animal {
 public:
+    Animal(string name, float weight, string sound, string family) {
+        this->name = name;
+        this->weight = weight;
+        this->sound = sound;
+        this->family = family;
+    } 
+
     virtual string getName() {
         return name;
     }
@@ -34,6 +42,8 @@ public:
         this->weight = weight;
     }
 
+    // overridden in Cat & Dog for specific output for each
+    // they call this for the common data item output
     virtual void print() {
         cout << "name: " << getName() << endl;
         cout << "family: " << getFamily() << endl;
@@ -43,15 +53,6 @@ public:
 
     virtual ~Animal() {}
 
-protected:
-    virtual void setSound(string sound) {
-        this->sound = sound;
-    }
-
-    virtual void setFamily(string family) {
-        this->family = family;
-    }
-
 private:
     string name = "";
     string sound = "";
@@ -59,14 +60,14 @@ private:
     float weight = 0.0;
 };
 
+// Dog class
 class Dog : public Animal {
 public:
-    Dog(string name, float weight) {
-        setName(name);
-        setWeight(weight);
-        setSound("bark");
-        setFamily("canine");
-    } 
+    Dog(string name, float weight) 
+        : Animal(name, weight, "bark", "canine") {
+
+        serviceDog = false;
+    }
 
     virtual void print() {
         Animal::print(); // call the base function print()
@@ -90,14 +91,11 @@ private:
     bool serviceDog = false;
 };
 
+// Cat class
 class Cat : public Animal {
 public:
-    Cat(string name, float weight) {
-        setName(name);
-        setWeight(weight);
-        setSound("meow");
-        setFamily("feline");
-    } 
+    Cat(string name, float weight) 
+        : Animal(name, weight, "meow", "feline") { }
 
     virtual void print() {
         Animal::print();  // call the base function print()
