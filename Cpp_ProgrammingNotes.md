@@ -551,9 +551,6 @@ Note the use of two different **constructors**, one of which allows the Vector t
 
 ```c++
 #include <iostream>
-#include <cstring>
-#include <ctime>
-#include <cstdlib>
 
 class Vector {
 public:
@@ -577,7 +574,7 @@ public:
     //subscripting access
     double& operator[](int i) { return elem[i]; }
 
-    // provide for range-for syntax - for (double x : v)
+    // provide for range-for sytnax - for (double x : v)
     double* begin() {
         return &elem[0];
     }
@@ -585,7 +582,7 @@ public:
     double* end() {
         return &elem[sz];
     }
-    
+
     int size() { return sz; }
 
 private:
@@ -596,15 +593,12 @@ private:
 int main() {
     using namespace std;
 
-    srand(time(nullptr)); // use current time as seed
-
     Vector v(5);
     for (auto i = 0; i < v.size(); i++)
-        v[i] = (rand() % 100) / (double) (rand() % 100);
+        v[i] = (11 * i) + ((double) (i + 1) / 10);
 
     double sum = 0.0;
     for (auto i = 0; i < v.size(); i++) {
-        cout.precision(5);
         cout << v[i] << endl;
         sum += v[i];
     }
@@ -614,33 +608,44 @@ int main() {
     Vector v2 = { 1.1, 2.2, 3.3, 4.4, 5.5 };
     for (auto i = 0; i < v2.size(); i++)
         cout << v2[i] << endl;
-        
+
     // range-for support through begin() & end()
     cout << "range-for output\n";
     for (double x : v) {
         cout << x << endl;
-    }        
+    }
+
     return 0;
 }
 ```
 
 **Output:**
 
-```bash
-0.2093
-33
-0.72043
-50
-1.0833
-sum = 85.013
+```
+0.1
+11.2
+22.3
+33.4
+44.5
+sum = 111.5
 1.1
 2.2
 3.3
 4.4
 5.5
+range-for output
+0.1
+11.2
+22.3
+33.4
+44.5
 Destructor invoked
 Destructor invoked
 ```
+
+# Namespace
+
+Refer to the following example in the **Modules** section of an example of creating a custom namespace.
 
 # Modules
 
@@ -648,21 +653,20 @@ Destructor invoked
 
 Note: these examples are based on [C++ Programming Language 4th Edition](https://www.amazon.com/C-Programming-Language-Bjarne-Stroustrup-ebook/dp/B00DUW4BMS) by Bjarne Stroustrup with some modifications by me.
 
+Note the use of the tlk namespace in these examples is not required for modules, but is a good practice for custom library clode.
+
 **module_ex1a.cpp** - the module with the main function
 
 ```c++
 #include <iostream>
-#include <ctime>
-#include <cstdlib>
-#include "Vector.h"  // the external definition of Vector class
+#include "Vector.h"
 
 int main() {
     using namespace std;
 
-    srand(time(nullptr)); // use current time as seed
-    Vector v(8);
+    tlk::Vector v(8);
     for (auto i = 0; i < v.size(); i++)
-        v[i] = (rand() % 100) / (double) (rand() % 100);
+        v[i] = (11 * i) + ((double) (i + 1) / 10);
 
     double sum = 0.0;
     for (auto i = 0; i < v.size(); i++) {
@@ -671,6 +675,12 @@ int main() {
         sum += v[i];
     }
     cout << "sum = " << sum << endl;
+
+    // range-for support through begin() & end()
+    cout << "range-for output\n";
+    for (double x : v) {
+        cout << x << endl;
+    }
     return 0;
 }
 ```
@@ -678,37 +688,54 @@ int main() {
 **Vector.h** - the header file that defines the Vector class
 
 ```c++
-class Vector {
-public:
-    Vector(int s);
-    double& operator[](int i);
-    int size();
-private:
-    double* elem;
-    int sz;
-};
+namespace tlk {
+    class Vector {
+    public:
+        Vector(int s);
+        double& operator[](int i);
+        double* begin();
+        double* end();
+        int size();
+    private:
+        double* elem;
+        int sz;
+    };
+}
 ```
 
 **module_ex1b.cpp** - the module that implements the Vector class
 
 ```c++
+#include <stdexcept>
 #include "Vector.h"
+namespace tlk {
+    // constructor - init elem & sz
+    Vector::Vector(int s)
+        :elem {new double[s]}, sz{s}
+    {
+    }
 
-// constructor - init elem & sz
-Vector::Vector(int s)
-    :elem {new double[s]}, sz{s}
-{
-}
+    //subscripting access
+    double& Vector::operator[](int i)
+    {
+        if (i < 0 || size() <= i)
+            throw std::out_of_range{"Vector::operator[]"};
+        return elem[i];
+    }
 
-//subscripting access
-double& Vector::operator[](int i)
-{
-    return elem[i];
-}
+    // provide for range-for sytnax - for (double x : v)
+    double* Vector::begin() {
+        return &elem[0];
+    }
 
-int Vector::size()
-{
-    return sz;
+    double* Vector::end() {
+        return &elem[sz];
+    }
+
+    int Vector::size()
+    {
+        return sz;
+    }
 }
 ```
 Note how the class implementation is separated from the class definition, which is now in Vector.h
@@ -782,7 +809,6 @@ int main() {
 
     double sum = 0.0;
     for (auto i = 0; i < vdbl.size(); i++) {
-        cout.precision(5);
         cout << vdbl[i] << endl;
         sum += vdbl[i];
     }
@@ -802,6 +828,29 @@ int main() {
 
     return 0;
 }
+```
+
+**Output:**
+
+```
+0.1
+11.2
+22.3
+33.4
+44.5
+sum = 111.5
+1
+2
+3
+4
+5
+range-for output
+one
+two
+three
+Destructor invoked
+Destructor invoked
+Destructor invoked
 ```
 
 # Input / Output
