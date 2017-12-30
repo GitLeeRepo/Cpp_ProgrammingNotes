@@ -715,7 +715,94 @@ Note how the class implementation is separated from the class definition, which 
 
 # Templates
 
-TBD
+Concepts
+* To declare a template precede either a class or function with **template\<class T\>** or **template\<typname T\>**, either of which works since they are synonymous.  The class version applies equally to function templates as it does to class templates.  They can be used interchangeably.
+* With a template the data type itself is passed at the parameter, often specified as **T** by convention, but it can be whatever you want.
+* Templates are the C++ means of supporting generic programming.
+* Templates are resolved at compile time, as opposed to C# and Java generics which are resolved at run time.  The compiler will generate the appropriate code for the types your template uses, it doesn't generate anything for types that are not used.
+* Members of a class that are part of a class declared as a template class with **template\<class T\>** are themselves templates, unless the implementation is separate, in which case you must procede each method with a template declaration.
+* Members of a class template are defined exactly the same as in non-template classes, the only difference is using a template paramater such as T in place of another type such as double.
+* Templates stored in a separate module, such as your own template library, run into an issue with the linker trying to resolve the references, when the definition in a header is separate from the implementation in an object file, as is typically done with class libraries.  There are a couple of different ways of resolving this such as combining the implementation and declaration in the header, or including the cpp file (#include "mytemplatelib.cpp") in the source.  Other methods involve putting dummy function calls in the \*.cpp file that contains the template implementation, which calls each definition with the expected types.  The function itself doesn't need to be called, it just needs to exist for the linker to resolve the different type possibilities.
+* When creating a template class or function, it is often easier to create the class or function using a specific type first, debug it, and then convert it to the template version.
+* For the most part the rules for template classes and functions are the same.
+
+## Example Class Template
+
+This example is a conversion of the previous Vector class example based on code from [C++ Programming Language 4th Edition](https://www.amazon.com/C-Programming-Language-Bjarne-Stroustrup-ebook/dp/B00DUW4BMS) by Bjarne Stroustrup, with modifications by me.
+
+```c++
+#include <iostream>
+#include <string>
+
+template <typename T>
+class Vector {
+public:
+    // constructor - init elem & sz
+    Vector(int s) :elem{new T[s]}, sz{s} {
+        for (int i = 0; i < s; i++)
+            elem[i] = 0;
+    }
+
+    // constructor - initialize with list, ex., Vector v =  { 1, 2, 3 }
+    Vector(std::initializer_list<T> lst)
+        :elem{new T[lst.size()]}, sz{static_cast<int>(lst.size())} {
+        std::copy(lst.begin(), lst.end(), elem);
+    }
+    // destructor
+    ~Vector() {
+        delete[] elem;
+        std::cout << "Destructor invoked\n";
+    }
+
+    //subscripting access
+    T& operator[](int i) { return elem[i]; }
+
+    // provide for range-for sytnax - for (double x : v)
+    T* begin() {
+        return &elem[0];
+    }
+
+    T* end() {
+        return &elem[sz];
+    }
+
+    int size() { return sz; }
+
+private:
+    T* elem;  // pointer to the elements
+    int sz;        // number of elements
+};
+
+int main() {
+    using namespace std;
+
+    Vector<double> vdbl(5);
+    for (auto i = 0; i < vdbl.size(); i++)
+        vdbl[i] = (11 * i) + ((double) (i + 1) / 10);
+
+    double sum = 0.0;
+    for (auto i = 0; i < vdbl.size(); i++) {
+        cout.precision(5);
+        cout << vdbl[i] << endl;
+        sum += vdbl[i];
+    }
+    cout << "sum = " << sum << endl;
+
+    // initialize vector from a list
+    Vector<int> vint = { 1, 2, 3, 4, 5 };
+    for (auto i = 0; i < vint.size(); i++)
+        cout << vint[i] << endl;
+
+    Vector<string> vstr = { "one", "two", "three" };
+    // range-for support through begin() & end()
+    cout << "range-for output\n";
+    for (string x : vstr) {
+        cout << x << endl;
+    }
+
+    return 0;
+}
+```
 
 # Input / Output
 
