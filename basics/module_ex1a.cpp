@@ -5,18 +5,14 @@
 // Makefile for linking info
 
 #include <iostream>
-#include <ctime>
-#include <cstdlib>
 #include "Vector.h"
 
 int main() {
     using namespace std;
 
-    srand(time(nullptr)); // use current time as seed
-
     tlk::Vector v(8);
     for (auto i = 0; i < v.size(); i++)
-        v[i] = (rand() % 100) / (double) (rand() % 100);
+        v[i] = (11 * i) + ((double) (i + 1) / 10);
 
     double sum = 0.0;
     for (auto i = 0; i < v.size(); i++) {

@@ -574,7 +574,7 @@ public:
     //subscripting access
     double& operator[](int i) { return elem[i]; }
 
-    // provide for range-for sytnax - for (double x : v)
+    // provide for range-for syntax - for (double x : v)
     double* begin() {
         return &elem[0];
     }
@@ -653,7 +653,7 @@ Refer to the following example in the **Modules** section of an example of creat
 
 Note: these examples are based on [C++ Programming Language 4th Edition](https://www.amazon.com/C-Programming-Language-Bjarne-Stroustrup-ebook/dp/B00DUW4BMS) by Bjarne Stroustrup with some modifications by me.
 
-Note the use of the tlk namespace in these examples is not required for modules, but is a good practice for custom library clode.
+Note the use of the tlk namespace in these examples is not required for modules, but is a good practice for custom library code.
 
 **module_ex1a.cpp** - the module with the main function
 
@@ -723,7 +723,7 @@ namespace tlk {
         return elem[i];
     }
 
-    // provide for range-for sytnax - for (double x : v)
+    // provide for range-for syntax - for (double x : v)
     double* Vector::begin() {
         return &elem[0];
     }
@@ -743,12 +743,12 @@ Note how the class implementation is separated from the class definition, which 
 # Templates
 
 Concepts
-* To declare a template precede either a class or function with **template\<class T\>** or **template\<typname T\>**, either of which works since they are synonymous.  The class version applies equally to function templates as it does to class templates.  They can be used interchangeably.
+* To declare a template precede either a class or function with **template\<class T\>** or **template\<typename T\>**, either of which works since they are synonymous.  The class version applies equally to function templates as it does to class templates.  They can be used interchangeably.
 * With a template the data type itself is passed at the parameter, often specified as **T** by convention, but it can be whatever you want.
 * Templates are the C++ means of supporting generic programming.
 * Templates are resolved at compile time, as opposed to C# and Java generics which are resolved at run time.  The compiler will generate the appropriate code for the types your template uses, it doesn't generate anything for types that are not used.
-* Members of a class that are part of a class declared as a template class with **template\<class T\>** are themselves templates, unless the implementation is separate, in which case you must procede each method with a template declaration.
-* Members of a class template are defined exactly the same as in non-template classes, the only difference is using a template paramater such as T in place of another type such as double.
+* Members of a class that are part of a class declared as a template class with **template\<class T\>** are themselves templates, unless the implementation is separate, in which case you must precede each method with a template declaration.
+* Members of a class template are defined exactly the same as in non-template classes, the only difference is using a template parameter such as T in place of another type such as double.
 * Templates stored in a separate module, such as your own template library, run into an issue with the linker trying to resolve the references, when the definition in a header is separate from the implementation in an object file, as is typically done with class libraries.  There are a couple of different ways of resolving this such as combining the implementation and declaration in the header, or including the cpp file (#include "mytemplatelib.cpp") in the source.  Other methods involve putting dummy function calls in the \*.cpp file that contains the template implementation, which calls each definition with the expected types.  The function itself doesn't need to be called, it just needs to exist for the linker to resolve the different type possibilities.
 * When creating a template class or function, it is often easier to create the class or function using a specific type first, debug it, and then convert it to the template version.
 * For the most part the rules for template classes and functions are the same.
@@ -784,7 +784,7 @@ public:
     //subscripting access
     T& operator[](int i) { return elem[i]; }
 
-    // provide for range-for sytnax - for (double x : v)
+    // provide for range-for syntax - for (double x : v)
     T* begin() {
         return &elem[0];
     }

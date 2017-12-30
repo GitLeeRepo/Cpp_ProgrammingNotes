@@ -4,9 +4,6 @@
 // with modifications by TK
 
 #include <iostream>
-#include <cstring>
-#include <ctime>
-#include <cstdlib>
 
 class Vector {
 public:
@@ -30,7 +27,7 @@ public:
     //subscripting access
     double& operator[](int i) { return elem[i]; }
 
-    // provide for range-for sytnax - for (double x : v)
+    // provide for range-for syntax - for (double x : v)
     double* begin() {
         return &elem[0];
     }
@@ -49,15 +46,12 @@ private:
 int main() {
     using namespace std;
 
-    srand(time(nullptr)); // use current time as seed
-
     Vector v(5);
     for (auto i = 0; i < v.size(); i++)
-        v[i] = (rand() % 100) / (double) (rand() % 100);
+        v[i] = (11 * i) + ((double) (i + 1) / 10);
 
     double sum = 0.0;
     for (auto i = 0; i < v.size(); i++) {
-        cout.precision(5);
         cout << v[i] << endl;
         sum += v[i];
     }

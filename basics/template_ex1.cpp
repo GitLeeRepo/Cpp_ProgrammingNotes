@@ -5,10 +5,7 @@
 // and strings
 
 #include <iostream>
-#include <cstring>
 #include <string>
-#include <ctime>
-#include <cstdlib>
 
 template <typename T>
 class Vector {
@@ -33,7 +30,7 @@ public:
     //subscripting access
     T& operator[](int i) { return elem[i]; }
 
-    // provide for range-for sytnax - for (double x : v)
+    // provide for range-for syntax - for (double x : v)
     T* begin() {
         return &elem[0];
     }
@@ -52,15 +49,12 @@ private:
 int main() {
     using namespace std;
 
-    srand(time(nullptr)); // use current time as seed
-
     Vector<double> vdbl(5);
     for (auto i = 0; i < vdbl.size(); i++)
-        vdbl[i] = (rand() % 100) / (double) (rand() % 100);
+        vdbl[i] = (11 * i) + ((double) (i + 1) / 10);
 
     double sum = 0.0;
     for (auto i = 0; i < vdbl.size(); i++) {
-        cout.precision(5);
         cout << vdbl[i] << endl;
         sum += vdbl[i];
     }
