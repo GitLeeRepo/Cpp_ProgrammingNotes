@@ -577,7 +577,7 @@ public:
     //subscripting access
     double& operator[](int i) { return elem[i]; }
 
-    // provide for range-for sytnax - for (double x : v)
+    // provide for range-for syntax - for (double x : v)
     double* begin() {
         return &elem[0];
     }

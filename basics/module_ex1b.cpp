@@ -23,6 +23,15 @@ namespace tlk {
         return elem[i]; 
     }
 
+    // provide for range-for sytnax - for (double x : v)
+    double* Vector::begin() {
+        return &elem[0];
+    }
+
+    double* Vector::end() {
+        return &elem[sz-1];
+    }
+
     int Vector::size() 
     { 
         return sz; 

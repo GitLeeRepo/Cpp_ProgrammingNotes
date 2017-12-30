@@ -51,3 +51,4 @@ in*.txt
 
 # excluded cpp files and their executables
 sandbox*
+test*

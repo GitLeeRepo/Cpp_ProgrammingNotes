@@ -26,5 +26,11 @@ int main() {
     }
     cout << "sum = " << sum << endl;
 
+    // range-for support through begin() & end()
+    cout << "range-for output\n";
+    for (double x : v) {
+        cout << x << endl;
+    }
+
     return 0;
 }
