@@ -12,19 +12,22 @@ COMMON_LIB = $(COMMON_DIR)/common.o
 COMMON_INCL = $(COMMON_DIR)/common.h
 
 EXE = sandbox01 datatype_ex1 cout_ex1 array_ex1 string_ex1 string_ex2 cin_ex1 \
-      struct_ex1 class_ex1 class_ex2 class_ex3 except_ex1
+      struct_ex1 class_ex1 class_ex2 class_ex3 except_ex1 template_ex1
 EXE2 = module_ex1a
+EXE3 = template_ex2a
 INCFILES =
 INCFILES2 = Vector.h
+INCFILES3 = VectorT.h
 LDLIBS =
-LDLIBS2 = module_ex1b.o
+LDLIBS2 = module_ex1b.o 
+LDLIBS3 = template_ex2b.o
 CC=g++
 CPPFLAGS = -std=c++11 -gdwarf -Wall
 #CPPFLAGS =  -gdwarf -Wall
 
 .PHONY: info clean
 
-all: info $(LDLIBS) $(LDLIBS2) $(EXE) $(EXE2)
+all: info $(LDLIBS) $(LDLIBS2) $(EXE) $(EXE2) $(EXE3)
 
 info:
 	@echo "Info: make for: $(EXE)"
@@ -34,10 +37,14 @@ $(EXE): $(INCFILES)
 
 $(EXE2): $(INCFILES2) $(LDLIBS2) 
 
+$(EXE3): $(INCFILES3) $(LDLIBS3) 
+
 # compile common object tile
 $(LDLIBS): $(INCFILES) 
 
 $(LDLIBS2): $(INCFILES2) 
 
+$(LDLIBS3): $(INCFILES3) 
+
 clean:
-	$(RM) $(EXE) $(EXE2) *.o
+	$(RM) $(EXE) $(EXE2) $(EXE3) *.o

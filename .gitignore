@@ -41,6 +41,8 @@ module_ex?
 module_ex??
 string_ex?
 struct_ex?
+template_ex?
+template_ex??
 
 # swap files
 *.swp
