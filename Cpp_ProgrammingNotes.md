@@ -495,6 +495,7 @@ Range-for statements allow you to iterate over a list:
     for (auto x: { 3, 2, 1 })
         cout << x << endl;
 ```
+Refer to the Classes section of adding range-for support to custom classes
 
 ## for Statement using Pointer Arithmetic
 
@@ -576,6 +577,15 @@ public:
     //subscripting access
     double& operator[](int i) { return elem[i]; }
 
+    // provide for range-for sytnax - for (double x : v)
+    double* begin() {
+        return &elem[0];
+    }
+
+    double* end() {
+        return &elem[sz-1];
+    }
+    
     int size() { return sz; }
 
 private:
@@ -604,7 +614,12 @@ int main() {
     Vector v2 = { 1.1, 2.2, 3.3, 4.4, 5.5 };
     for (auto i = 0; i < v2.size(); i++)
         cout << v2[i] << endl;
-
+        
+    // range-for support through begin() & end()
+    cout << "range-for output\n";
+    for (double x : v) {
+        cout << x << endl;
+    }        
     return 0;
 }
 ```
