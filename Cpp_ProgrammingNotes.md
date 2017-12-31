@@ -466,7 +466,59 @@ Here is an example of pairing **new** and **delete** operations (refer to the **
 
 # Operators and Expressions
 
-TBD
+C++ provides the standard arithmetic operators found in just about any language, although it does not provide an exponent operator, you must use the pow() function in the standard library.
+
+Arithmetic Operators
+* +	Addition
+* -	Subtraction
+* \*	Multiplication
+* /	Division
+* %	Modulus
+* ++	Increment operator. both pre and post
+* --	Decrement operator, both pre and post
+
+Relational Operators
+* ==	eqality
+* !=	Inequality
+* >	greater
+* <	less
+* >=	greater than or equal
+* <=	less than or equal
+
+Logical Operators
+* &&	and
+* ||	or
+* !	not
+
+Bitwise Operators
+
+* &	Binary AND
+* |	Binary OR 
+* ^	Binary XOR
+* ~	Binary Ones Complement
+* <<	Binary Left Shift
+* >>	Binary Right Shift
+
+Assignment Operators
+* =	assignment
+* +=	Adds to value on left and assign
+* -=	Subtracts from value on left and assign
+* \*=	Multiply to value on the left and assign
+* /=	Divide from the value on the left and assign
+* %=	perform Modulus on value on the left and assign
+* <<=	Left shift value on the left and assign
+* >>=	Right shift value on the left and assign
+* &=	Bitwise AND operation of the value on the left and assign
+* ^=	Bitwise exclusive OR on the value on the left and assign
+* |=	Bitwise inclusive OR on the value on the left and assign
+
+Misc Operators
+* sizeof size of object or data type
+* immediate if components if ? X : Y
+* . (dot) and -> (arrow)	
+* Cast   
+* &   address of
+* \*  pointer to
 
 # Conditionals
 
