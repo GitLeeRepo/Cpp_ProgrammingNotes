@@ -511,7 +511,49 @@ Using the increment operator to traverse through the elements of an array pointe
 
 # Functions
 
-TBD
+## Passing by Reference vs by Value
+
+C++ uses the **&** (apersand) following the type designator for the reference variable in the called functions parameter list.  For example:
+
+```c++
+#include <iostream>
+
+int funcByRef(int& times2) {
+    times2 *= 2;  // change reflected after the function returns
+    return times2;
+}
+
+// function called with a parmater by value which won't be changed on return
+int funcByVal(int times2) {
+    times2 *= 2;   // only changed locally
+    return times2;
+}
+
+int main() {
+    using namespace std;
+    int x = 2;
+    int result = 0;
+
+    // x passed by value, so unchanged by the function
+    cout << "x before calling funcByVal(): " << x << endl;
+    result = funcByVal(x);
+    cout << "funcByVal() returns " << result << " and x is still " << x <<endl;
+
+    // x pased by reference, so it is changed by the function
+    cout << "x before calling funcByRef(): " << x << endl;
+    result = funcByRef(x);
+    cout << "funcByRef() returns " << result << " and x was changed to " << x <<endl;
+}
+```
+
+**Output:**
+
+```
+x before calling funcByVal(): 2
+funcByVal() returns 4 and x is still 2
+x before calling funcByRef(): 2
+funcByRef() returns 4 and x was changed to 4
+```
 
 # Classes & Object Oriented Programming
 
