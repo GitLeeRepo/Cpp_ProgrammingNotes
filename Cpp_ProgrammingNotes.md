@@ -1203,7 +1203,7 @@ Template specialization allows you to write custom code for the compiler to use 
 
 Template specialization demo.  This example illustrates writing a separate specialized template class to handle a case that would not have been handled properly by the compiler generated one.  This is an over simplified example, and in this case there would be better solutions, such as operator overloading, but here it is used in order to illustrate the syntax and techniques for implementing specialization. 
 
-In this example, the OneFiveStruct is the specializaton case, the standard non-specialized template handles the other cases of integers, strings, and enums.
+In this example, the OneFiveStruct is the specialization case, the standard non-specialized template handles the other cases of integers, strings, and enums.
 
 ```c++
 #include <iostream>
