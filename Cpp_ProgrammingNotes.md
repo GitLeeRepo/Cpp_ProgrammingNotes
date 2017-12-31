@@ -478,7 +478,7 @@ Arithmetic Operators
 * --	Decrement operator, both pre and post
 
 Relational Operators
-* ==	eqality
+* ==	equality
 * !=	Inequality
 * \>	greater
 * \<	less
@@ -536,7 +536,7 @@ struct OrderItem {
     int orderNum = 0;
     int itemNum = 0;
     std::string itemName = "";
-    OrderItem() {}  // used by new in OrderItems initalizer_list constructor
+    OrderItem() {}  // used by new in OrderItems initializer_list constructor
     OrderItem(int orderNum, int itemNum, std::string itemName)
         : orderNum{orderNum}, itemNum{itemNum}, itemName{itemName} {}
 };
@@ -563,7 +563,7 @@ public:
     }
 
     // not equal if orderItems object doesn't have same orderNum
-    // for more of a 'not in' operator than nonequality
+    // for more of a 'not in' operator than inequality
     bool operator!=(int orderNum) {
         return !hasOrder(orderNum);
     }
@@ -657,9 +657,9 @@ orderItems2 order number 3 is not in the order
 
 # Conditionals
 
-## Condition Shortcutting
+## Condition Shortcuts
 
-In C++ condition statements are shortcutted, which means as soon as the condition is met, the expression is not evaluated any further.  Conditions are evaluated from left to right  This can be significant if one of the expressions being evaluated is a function, because it may or may not be called.  If it needs to be called regardless of the other condition, then either place it first, or place the function outside of the evaluation with multiple conditions.
+In C++ condition statements are shortcut, which means as soon as the condition is met, the expression is not evaluated any further.  Conditions are evaluated from left to right  This can be significant if one of the expressions being evaluated is a function, because it may or may not be called.  If it needs to be called regardless of the other condition, then either place it first, or place the function outside of the evaluation with multiple conditions.
 
 ```c++
 // if express1 is false express2 will never be evaluated
@@ -717,7 +717,7 @@ int main() {
             cout << "You did not enter one of the requested numbers" << endl;
     }
 
-    cout << "Evaluating using if / elseif / else" << endl;
+    cout << "Evaluating using if / else if / else" << endl;
     if (eval == 1)
         cout << "You entered one" << endl;
     else if (eval == 2 or eval == 3)

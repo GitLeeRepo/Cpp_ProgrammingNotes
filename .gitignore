@@ -40,8 +40,10 @@ except_ex?
 func_ex?
 module_ex?
 module_ex??
+oper_overload_ex?
 string_ex?
 struct_ex?
+switch_ex?
 template_ex?
 template_ex??
 
