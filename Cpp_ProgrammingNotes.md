@@ -470,6 +470,18 @@ TBD
 
 # Conditionals
 
+## Condition Shortcutting
+
+In C++ condition statements are shortcutted, which means as soon as the condition is met, the expression is not evaluated any further.  Conditions are evaluated from left to right  This can be significant if one of the expressions being evaluated is a function, because it may or may not be called.  If it needs to be called regardless of the other condition, then either place it first, or place the function outside of the evaluation with multiple conditions.
+
+```c++
+// if express1 is false express2 will never be evaluated
+if (express1 && express2) ...
+
+// if express1 is true then express2 will never be evaluated
+if (express1 !! express2) ...
+```
+
 ## Immediate If
 
 C++ supports the immediate if, for example:
@@ -487,6 +499,49 @@ C++ supports the immediate if, for example:
 ```
 True
 False
+```
+
+## Switch and if / else if / else compared
+
+```c++
+#include <iostream>
+
+int main() {
+    using namespace std;
+
+    int eval;
+
+    cout << "Enter a number between 1 and 4 to be evaluated in a switch and if / else if / else" << endl;
+    cin >> eval;
+
+    cout << "Evaluating using a switch" << endl;
+    switch (eval) {
+        case 1:
+            cout << "You entered one" << endl;
+            break;
+        case 2:  // 2 falls through to 3.  The equivalent of an or condition
+        case 3:
+            cout << "You entered either two or three" << endl;
+            break;
+        case 4:
+            cout << "You entered four" << endl;
+            break;
+        default:
+            cout << "You did not enter one of the requested numbers" << endl;
+    }
+
+    cout << "Evaluating using if / elseif / else" << endl;
+    if (eval == 1)
+        cout << "You entered one" << endl;
+    else if (eval == 2 or eval == 3)
+        cout << "You entered either two or three" << endl;
+    else if (eval == 4)
+        cout << "You entered four" << endl;
+    else
+        cout << "You did not enter one of the requested numbers" << endl;
+
+    return 0;
+}
 ```
 
 # Loops
