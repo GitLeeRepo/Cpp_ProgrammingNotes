@@ -687,8 +687,6 @@ namespace tlk {
 tlk::Vector v(5);
 ```
 
-Refer to the following example in the **Modules** section of an example of creating a custom namespace.
-
 # Modules
 
 ## Example using the Vector Class from the Prior Classes Section
