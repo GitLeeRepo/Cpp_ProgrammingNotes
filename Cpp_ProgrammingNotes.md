@@ -645,6 +645,48 @@ Destructor invoked
 
 # Namespace
 
+## Accessing Namespaces
+
+Use the **::** scope resolution operator.
+
+```c++
+std::cout << "Hello" << std:: endl;
+```
+Uses cout and endl in the std namespace.
+
+## Using an existing namespace
+
+The most common namespace is **std** for the standard library namespace.  Every function, class, etc. in the standard library is within this namespace
+
+```c++
+using namesapce std;
+
+// or for just select items
+using std::cout;
+using std::endl;
+```
+
+## Creating Your Own Namespace
+
+```c++
+namespace tlk {
+    class Vector {
+    public:
+        Vector(int s);
+        double& operator[](int i);
+        double* begin();
+        double* end();
+        int size();
+    private:
+        double* elem;
+        int sz;
+    };
+}
+
+// to then use this namespace, qualify it with tlk::
+tlk::Vector v(5);
+```
+
 Refer to the following example in the **Modules** section of an example of creating a custom namespace.
 
 # Modules
