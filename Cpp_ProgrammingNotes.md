@@ -470,7 +470,24 @@ TBD
 
 # Conditionals
 
-TBD
+## Immediate If
+
+C++ supports the immediate if, for example:
+
+```c++
+    int myInt = 123456;
+    long myLong = 123456789;
+    
+    cout << (myInt < myLong ? "True" : "False") << endl;
+    cout << (myInt > myLong ? "True" : "False") << endl;
+```
+
+**Output:**
+
+```
+True
+False
+```
 
 # Loops
 
