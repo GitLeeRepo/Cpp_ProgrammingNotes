@@ -513,7 +513,7 @@ Using the increment operator to traverse through the elements of an array pointe
 
 ## Passing by Reference vs by Value
 
-C++ uses the **&** (apersand) following the type designator for the reference variable in the called functions parameter list.  For example:
+C++ uses the **&** (ampersand) following the type designator for the reference variable in the called functions parameter list.  For example:
 
 ```c++
 #include <iostream>
@@ -523,7 +523,7 @@ int funcByRef(int& times2) {
     return times2;
 }
 
-// function called with a parmater by value which won't be changed on return
+// function called with a parameter by value which won't be changed on return
 int funcByVal(int times2) {
     times2 *= 2;   // only changed locally
     return times2;
@@ -539,7 +539,7 @@ int main() {
     result = funcByVal(x);
     cout << "funcByVal() returns " << result << " and x is still " << x <<endl;
 
-    // x pased by reference, so it is changed by the function
+    // x passed by reference, so it is changed by the function
     cout << "x before calling funcByRef(): " << x << endl;
     result = funcByRef(x);
     cout << "funcByRef() returns " << result << " and x was changed to " << x <<endl;
@@ -701,7 +701,7 @@ Uses cout and endl in the std namespace.
 The most common namespace is **std** for the standard library namespace.  Every function, class, etc. in the standard library is within this namespace
 
 ```c++
-using namesapce std;
+using namespace std;
 
 // or for just select items
 using std::cout;

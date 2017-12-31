@@ -6,4 +6,4 @@ By default the notes in the main [Cpp_ProgrammingNotes](https://github.com/GitLe
 
 # Standards
 
-By default vs C++ is using C++14 standard, with C++17 and the the latest versions available as options availble under "C++ Lanugage Standard" on the project properties.
+By default vs C++ is using C++14 standard, with C++17 and the the latest versions available as options available under "C++ Language Standard" on the project properties.

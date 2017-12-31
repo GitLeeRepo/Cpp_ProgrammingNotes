@@ -12,7 +12,9 @@ COMMON_LIB = $(COMMON_DIR)/common.o
 COMMON_INCL = $(COMMON_DIR)/common.h
 
 EXE = sandbox01 datatype_ex1 cout_ex1 array_ex1 string_ex1 string_ex2 cin_ex1 \
-      struct_ex1 class_ex1 class_ex2 class_ex3 except_ex1 template_ex1
+      struct_ex1 class_ex1 class_ex2 class_ex3 except_ex1 template_ex1 \
+      func_ex1
+
 EXE2 = module_ex1a
 EXE3 = template_ex2a
 INCFILES =
