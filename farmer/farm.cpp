@@ -91,18 +91,33 @@ private:
 };
 
 
-void displayMenu() {
-    cout << "Main Menu" << endl;
-    cout << "---------" << endl;
-    cout << "1. Status" << endl;
-    cout << "2. Plow" << endl;
-    cout << "3. Plant" << endl;
-    cout << "4. Harvest" << endl;
-    cout << "5. Sell Crop" << endl;
-    cout << "b. Buy Field" << endl;
-    cout << "n. Advance to Next Month" << endl;
-    cout << "q. Quit" << endl;
-
+void displayMenu(bool displayMenu) {
+    
+    if (displayMenu) {
+        cout << "Farm Menu" << endl;
+        cout << "---------" << endl;
+        cout << "1. Status" << endl;
+        cout << "2. Plow" << endl;
+        cout << "3. Plant" << endl;
+        cout << "4. Harvest" << endl;
+        cout << "5. Sell Crop" << endl;
+        cout << "b. Buy Field" << endl;
+        cout << "n. Advance to Next Month" << endl;
+        cout << "m. Toggle menu" << endl;
+        cout << "q. Quit" << endl;
+    }
+    else {
+        cout << "======================================================================================================" << endl;
+        cout << "m. Toggle menu  ";
+        cout << "1. Status  ";
+        cout << "2. Plow  ";
+        cout << "3. Plant  ";
+        cout << "4. Harvest  ";
+        cout << "5. Sell Crop  ";
+        cout << "b. Buy Field  ";
+        cout << "n. Next Month  ";
+        cout << "q. Quit" << endl;
+    }
 }
 
 void displayFieldStatus(Field field, Wallet wallet) {
@@ -111,29 +126,30 @@ void displayFieldStatus(Field field, Wallet wallet) {
     cout << "Crop: " << field.getCrop().cropType << endl;
     cout << "Crop sell price: " << field.getCrop().sellPrice << endl;
     cout << "Time to harvest: " << field.getCrop().monthsToGrow << endl;
-    cout << "Current balance: " << wallet.getCurrentBalance();
+    cout << "Current balance: " << wallet.getCurrentBalance() << endl;
+    cout << "Current field status: ";
     switch (field.getFieldStatus()) {
         case empty:
-            cout << "\tempty" << endl;
+            cout << "empty" << endl;
             break;
         case plowed:
-            cout << "\tplowed" << endl;
+            cout << "plowed" << endl;
             break;
         case planted:
-            cout << "\tplanted" << endl;
+            cout << "planted" << endl;
             break;
         case harvested:
-            cout << "\tharvested" << endl;
+            cout << "harvested" << endl;
             break;
         case sold:
-            cout << "\tcrop sold" << endl;
+            cout << "crop sold" << endl;
             break;
     }
 }
 
 void advanceNextMonth(Field& field, Wallet& wallet) {
     cout << endl;
-    cout << "One Month Passed" << endl << endl;
+    cout << "One Month Passed" << endl;
     field.decrementMonth();
     int monthlyAdjust = 0;
     switch (field.getWeatherEffects()) {
@@ -164,7 +180,7 @@ void advanceNextMonth(Field& field, Wallet& wallet) {
 
 }
 
-bool dispatcher(char choice, Field& field, Wallet& wallet) {
+bool dispatcher(bool& toggleMenuOn, char choice, Field& field, Wallet& wallet) {
     bool doContinue = true;
 
     if (choice > '1' && choice < '6' && field.getOwned() == false ) {
@@ -182,6 +198,7 @@ bool dispatcher(char choice, Field& field, Wallet& wallet) {
         case '2':
             cout << endl;
             cout << "Plowed" << endl << endl;
+            displayFieldStatus(field, wallet);
             field.setFieldStatus(plowed);
             cout << endl;
             break;
@@ -240,27 +257,33 @@ bool dispatcher(char choice, Field& field, Wallet& wallet) {
         case 'n':
             advanceNextMonth(field, wallet);
             break;
+        case 'm':
+            toggleMenuOn = !toggleMenuOn;
+            break;
         case 'q':
             cout << endl;
             cout << "Quitting" << endl << endl;
             doContinue = false;
             break;
     }
+    displayMenu(toggleMenuOn);
     return doContinue;
 }
 
 void mainLoop() {
     char choice = 'x';
     bool loop = true;
+    bool toggleMenuOn = false;
     FieldStatus fieldStatus = empty;
     Field field("Field 1", 5, 500);
     Wallet wallet(700);
 
+    displayMenu(toggleMenuOn);
     while (loop) {
-        displayMenu();
+        cout << "======================================================================================================" << endl;
         cout << ">";
         cin >> choice;
-        loop = dispatcher(choice, field, wallet);
+        loop = dispatcher(toggleMenuOn, choice, field, wallet);
     }
 }
 
