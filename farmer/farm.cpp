@@ -21,8 +21,13 @@ struct Crop {
 
 class Wallet {
 public:
+    Wallet() {}
     Wallet(int startingBalance) : currentBalance{startingBalance} {}
 
+    int setCurrentBalance(int startingBalance)  { 
+        currentBalance = startingBalance; 
+        return currentBalance;
+    }
     int getCurrentBalance() { return currentBalance; }
     int adjustCurrentBalance(int amtToAdjust) {
         return currentBalance += amtToAdjust; 
@@ -34,6 +39,7 @@ private:
 
 class Field {
 public:
+    Field() {}
     Field(std::string fieldName, int acres, int purchasePrice) 
         : fieldName{fieldName}, acres{acres}, purchasePrice{purchasePrice}, 
                             owned{false}, fieldStatus{empty} {}
@@ -43,6 +49,8 @@ public:
         this->fieldStatus = fieldStatus;
         return this->fieldStatus; 
     }
+
+
     bool getOwned() { return owned; }
     bool setOwned(bool owned) { 
         this->owned = owned;
@@ -90,6 +98,29 @@ private:
     Crop crop;
 };
 
+
+class Farm {
+public:
+    Farm() {
+        FieldStatus fieldStatus = empty;
+        Field field("Field 1", 5, 500);
+        fields = field;
+        wallet.setCurrentBalance(700); 
+    }
+
+    Field& getField() { return fields; } 
+    //subscripting access
+//    Field& operator[](int i) { return fields[i]; }    
+
+    Wallet& getWallet() { return wallet; }
+private:
+    Field fields;
+    Wallet wallet;
+};
+
+//////////////////////////////////////////////////////////////
+// Standard Functions
+/////////////////////////////////////////////////////////////
 
 void displayMenu(bool displayMenu) {
     
@@ -180,8 +211,10 @@ void advanceNextMonth(Field& field, Wallet& wallet) {
 
 }
 
-bool dispatcher(bool& toggleMenuOn, char choice, Field& field, Wallet& wallet) {
+bool dispatcher(bool& toggleMenuOn, char choice, Farm& farm) {
     bool doContinue = true;
+    Field& field = farm.getField();
+    Wallet& wallet = farm.getWallet();
 
     if (choice > '1' && choice < '6' && field.getOwned() == false ) {
         cout << "You must own the field" << endl << endl;
@@ -208,7 +241,7 @@ bool dispatcher(bool& toggleMenuOn, char choice, Field& field, Wallet& wallet) {
                 cout << "Planted" << endl << endl;
                 wallet.adjustCurrentBalance(-100); // cost of seed
                 field.setFieldStatus(planted);
-                field.setCrop("Corn", 3, 300);
+                field.setCrop("Corn", 3, 200);
                 displayFieldStatus(field, wallet);
             }
             else {
@@ -274,16 +307,14 @@ void mainLoop() {
     char choice = 'x';
     bool loop = true;
     bool toggleMenuOn = false;
-    FieldStatus fieldStatus = empty;
-    Field field("Field 1", 5, 500);
-    Wallet wallet(700);
-
+    Farm farm;
+    
     displayMenu(toggleMenuOn);
     while (loop) {
         cout << "======================================================================================================" << endl;
         cout << ">";
         cin >> choice;
-        loop = dispatcher(toggleMenuOn, choice, field, wallet);
+        loop = dispatcher(toggleMenuOn, choice, farm);
     }
 }
 
