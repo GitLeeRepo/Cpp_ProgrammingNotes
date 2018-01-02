@@ -18,6 +18,7 @@ Notes on the C++ programming language
 
 For object oriented concepts and terminology refer to the [Classes & Object-Oriented-Programming](https://github.com/GitLeeRepo/Cpp_ProgrammingNotes/blob/master/Cpp_ProgrammingNotes.md#classes--object-oriented-programming) section
 
+* **Export Symbols** - when compiling external libraries you can export the symbols so that other programs know what your libary has to offer.  With C++ the compiler does function name mangling, which is necessary because C++ allows function overloading so a function with the same name can have several implentations.  To export a function without a mangled name, prefix the definition (typically in the header file) with **extern "C"**. From the command line run **dumpbin /exports \<libname>** to export the symbols.
 * **Translation Unit** - the unit of code that is translated into a single object file, tyically a single \*.cpp file and its header files.  That \*.cpp file will then typically refer to code in another translation unit containing its owin \*.cpp file and headers.  The header files will often be shared across translation units. 
 
 # Built-in Data Types
