@@ -425,7 +425,7 @@ int main() {
 
 ## References vs Pointers
 
-A reference is similar to a pointer but you don't need to dereference the variable with a **\*** prefix, and once set a reference can not be changed to reference something else (you can't use pointer arithmetic on them).  Because references cannot be changed, they can only be set at initialzation time, similar to a constant, but with different requirements and rules.  References are aliases, another way to refer to the same thing.  They are also used in parameter signatures to allow variables to be passed by reference rather than by value, or initialized when from a function whose return value is a reference.
+A reference is similar to a pointer but you don't need to dereference the variable with a **\*** prefix, and once set a reference can not be changed to reference something else (you can't use pointer arithmetic on them).  Because references cannot be changed, they can only be set at initialization time, similar to a constant, but with different requirements and rules.  References are aliases, another way to refer to the same thing.  They are also used in parameter signatures to allow variables to be passed by reference rather than by value, or initialized when from a function whose return value is a reference.
 
 This example shows some of the things that are allowed and not allowed with references
 ```c++
@@ -449,7 +449,7 @@ This example shows some of the things that are allowed and not allowed with refe
     // result: myInt = 8 refInt = 8 refIntC = 8
 ```
 
-Just rember that when you change a reference you change the original.  If you want to use a reference, but don't want to risk changing the original, then use a const reference.  Useful when you want to pass a large object by reference for efficiency, but don't want the function to change the original.
+Just remember that when you change a reference you change the original.  If you want to use a reference, but don't want to risk changing the original, then use a const reference.  Useful when you want to pass a large object by reference for efficiency, but don't want the function to change the original.
 
 ## Pointer Arithmetic using Increment Operator
 
@@ -485,7 +485,7 @@ Refer to the **Memory Management using Smart Pointers** in the **Memory Manageme
 
 ## nullptr
 
-A  **nullptr** should be used in comparisons rather than the older **NULL** when making comparisons or assignments since it makes it clear that you are dealing with pointer values rather than integer.  It is also a keyword that is part of the language rather than a precompliler define for zero.
+A  **nullptr** should be used in comparisons rather than the older **NULL** when making comparisons or assignments since it makes it clear that you are dealing with pointer values rather than integer.  It is also a keyword that is part of the language rather than a precompiler define for zero.
 
 ```c++
 int* ptr = nullptr;
@@ -541,7 +541,7 @@ Typical problems are
 * Calling Delete more than once
 * Forgetting to call delete, which results in memory leaks
 
-If you provide a destructor to free memory then you should apply the **rules of three**, which means in addition to the destructor you should provide a **copy constructor** and a **copy assignemnt operator**.  This is because when you have more than one copy of an object, by default the detructor is only going to free one of them.  By providing these you will ensure the destructor gets called for all copies of an object.
+If you provide a destructor to free memory then you should apply the **rules of three**, which means in addition to the destructor you should provide a **copy constructor** and a **copy assignment operator**.  This is because when you have more than one copy of an object, by default the destructor is only going to free one of them.  By providing these you will ensure the destructor gets called for all copies of an object.
 
 ### Memory Management using Smart Pointers
 
@@ -549,7 +549,7 @@ Smart pointers are pointer objects declared on the local stack, so that when the
 
 There are different types of smart pointers, some will prevent you from copying so you don't end up with multiple references, while others will keep reference counts, with copying incrementing it, and the destructor decrementing it until it reaches zero at which point it performs the delete.
 
-With smart pointers you don't have to worry about the **rules of three** (implenting the destructor, the copy constructor, and the copy assignment operator) since the smart pointers hande this for you.
+With smart pointers you don't have to worry about the **rules of three** (implementing the destructor, the copy constructor, and the copy assignment operator) since the smart pointers handle this for you.
 
 **Standard Library Smart Pointers:**
 * **shared_ptr** - reference counted smart pointer
