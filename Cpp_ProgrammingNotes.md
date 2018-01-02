@@ -1715,6 +1715,26 @@ int main() {
 }
 ```
 
+**Output:**
+
+```c++
+3  4  9  11  14
+3  4  9  11  14
+3  4  9  11  14
+   3  Odd
+   4  Even
+   9  Odd
+  11  Odd
+  14  Even
+9  16  81  121  196
+9  16  81  121  196
+9  11
+x = 5  y = 12
+102  272  1224  2992  7616
+x = 160  y = 384
+3468  18496  166464  813824  4143104
+```
+
 # Standard Library
 
 Some of the standard library classes include:
