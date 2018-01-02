@@ -528,6 +528,17 @@ Here is an example of pairing **new** and **delete** operations (refer to the **
     delete[] p;
 ```
 
+## Memory Management
+
+In general, if you can avoid memory management you should, such as by relying on collections in the standard library, because handling your own memory management is prone to bugs and memory leaks.
+
+Typical problems are
+* Freeing up memory too soon, which results in invalid references if you continue to reference it
+* Calling Delete more than once
+* Forgetting to call delete, which results in memory leaks
+
+If you provide a destructor to free memory then you should apply the **rules of three**, which means in addition to the destructor you should provide a **copy constructor** and a **copy assignemnt operator**.  This is because when you have more than one copy of an object, by default the detructor is only going to free one of them.  By providing these you will ensure the destructor gets called for all copies of an object.
+
 # Operators and Expressions
 
 C++ provides the standard arithmetic operators found in just about any language, although it does not provide an exponent operator, you must use the pow() function in the standard library.
