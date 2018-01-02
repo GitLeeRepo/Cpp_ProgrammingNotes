@@ -440,7 +440,16 @@ This example shows some of the things that are allowed and not allowed with refe
     Test& refClass = myClass;         // reference to non-dynamic class ok
     //Test& refClassPtr = myClassPtr; // not allowed, would require pointer dereferencing (->member)
     int& refInt = myInt;              // reference to basic type is allowed
+    const int& refIntC = myInt;       // referenced "value" cannot be changed directly, but will change
+                                      // when refInt, a.k.a myInt is changed below
+    
+    //refIntC = 8;                    // not allowed, it was declared const
+    refInt = 8;                       // also changes myInt to 8, and reflected in refIntC alias
+    cout << "myInt = " << myInt << " refInt = " << refInt << " refIntC = " << refIntC << endl;                     
+    // result: myInt = 8 refInt = 8 refIntC = 8
 ```
+
+Just rember that when you change a reference you change the original.  If you want to use a reference, but don't want to risk changing the original, then use a const reference.  Useful when you want to pass a large object by reference for efficiency, but don't want the function to change the original.
 
 ## Pointer Arithmetic using Increment Operator
 
