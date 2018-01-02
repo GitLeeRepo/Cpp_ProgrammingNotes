@@ -188,7 +188,7 @@ auto z = 1.8e18L;    // z becomes a long double
 
 ## Compound Type - Array
 
-In general the vector class in the C++ standard library should be chosen over the C style array illustrated here, since the Vector class can guard against out of bounds conditions (buffer overflows) and can be resized.  The older C style arrays are essentially pointers, in which the array name can be dereferenced using '\*' which gives you the first elememnt of the array.  One of the issues with arrays, in addition to buffer overflows which are are security concern, is that there is no concept of the size of an array (agaom it essentially is just a pointer.  Therefore whenever you pass an array to a function you must also pass the the size of the array so that you won't exceed its bounds.  Short of using a vector class, C++ does provide a wrapper for the C style array, namely the std::array, for which you are given a fixed length array that does have a size() member function.
+In general the vector class or std:array class in the C++ standard library should be chosen over the C style array illustrated here, the bector class can guard against out of bounds conditions (buffer overflows) and can be resized, the std::array class is for fixed length arrays.  The older C style arrays are essentially pointers, in which the array name can be dereferenced using '\*' which gives you the first elememnt of the array.  One of the issues with arrays, in addition to buffer overflows which are are security concern, is that there is no concept of the size of an array (agaom it essentially is just a pointer.  Therefore whenever you pass an array to a function you must also pass the the size of the array so that you won't exceed its bounds.  Short of using a vector class, C++ does provide a wrapper for the C style array, namely the std::array, for which you are given a fixed length array that does have a size() member function.
 
 ```c++
 #include <iostream>
@@ -613,6 +613,7 @@ Assignment Operators
 * |=	Bitwise inclusive OR on the value on the left and assign
 
 Misc Operators
+* :: Scope resolution operator used resolve namespaces, static members of classes, and scoped enumerators
 * sizeof size of object or data type
 * immediate if components if ? X : Y
 * . (dot) and -> (arrow)	
