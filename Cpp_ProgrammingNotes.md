@@ -481,7 +481,7 @@ cout << myClassPtr->getName() << endl;
 
 ## Smart Pointers
 
-Refer to the **Memory Management with Smart Pointers** in the **Memory Management** section below.
+Refer to the **Memory Management using Smart Pointers** in the **Memory Management** section below.
 
 ## nullptr
 
@@ -550,6 +550,12 @@ Smart pointers are pointer objects declared on the local stack, so that when the
 There are different types of smart pointers, some will prevent you from copying so you don't end up with multiple references, while others will keep reference counts, with copying incrementing it, and the destructor decrementing it until it reaches zero at which point it performs the delete.
 
 With smart pointers you don't have to worry about the **rules of three** (implenting the destructor, the copy constructor, and the copy assignment operator) since the smart pointers hande this for you.
+
+**Standard Library Smart Pointers:**
+* **shared_ptr** - reference counted smart pointer
+* **weak_ptr** - lets you examine a shared_ptr without increasing its reference count
+* **unique_ptr** - noncopyable (use std::move)
+
 
 # Operators and Expressions
 
