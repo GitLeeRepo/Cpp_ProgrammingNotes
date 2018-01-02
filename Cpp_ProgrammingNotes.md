@@ -479,6 +479,10 @@ cout << (*myClassPtr).getName() << endl;
 cout << myClassPtr->getName() << endl;
 ```
 
+## Smart Pointers
+
+Refer to the **Memory Management with Smart Pointers** in the **Memory Management** section below.
+
 ## nullptr
 
 A  **nullptr** should be used in comparisons rather than the older **NULL** when making comparisons or assignments since it makes it clear that you are dealing with pointer values rather than integer.  It is also a keyword that is part of the language rather than a precompliler define for zero.
@@ -538,6 +542,14 @@ Typical problems are
 * Forgetting to call delete, which results in memory leaks
 
 If you provide a destructor to free memory then you should apply the **rules of three**, which means in addition to the destructor you should provide a **copy constructor** and a **copy assignemnt operator**.  This is because when you have more than one copy of an object, by default the detructor is only going to free one of them.  By providing these you will ensure the destructor gets called for all copies of an object.
+
+### Memory Management using Smart Pointers
+
+Smart pointers are pointer objects declared on the local stack, so that when they go out of scope they call their destructor performing the delete.  They are templated so they work with all the data types, including user defined. Where a standard pointer is undefined if not initialized, a smart pointer is automatically initialized to nullptr.
+
+There are different types of smart pointers, some will prevent you from copying so you don't end up with multiple references, while others will keep reference counts, with copying incrementing it, and the destructor decrementing it until it reaches zero at which point it performs the delete.
+
+With smart pointers you don't have to worry about the **rules of three** (implenting the destructor, the copy constructor, and the copy assignment operator) since the smart pointers hande this for you.
 
 # Operators and Expressions
 
