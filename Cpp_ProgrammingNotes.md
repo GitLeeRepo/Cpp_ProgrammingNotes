@@ -445,7 +445,7 @@ This example shows some of the things that are allowed and not allowed with refe
     
     //refIntC = 8;                    // not allowed, it was declared const
     refInt = 8;                       // also changes myInt to 8, and reflected in refIntC alias
-    cout << "myInt = " << myInt << " refInt = " << refInt << " refIntC = " << refIntC << endl;                     
+    cout << "myInt = " << myInt << " refInt = " << refInt << " refIntC = " << refIntC << endl;
     // result: myInt = 8 refInt = 8 refIntC = 8
 ```
 
