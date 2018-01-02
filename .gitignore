@@ -39,6 +39,7 @@ datatype_ex?
 except_ex?
 farm
 func_ex?
+map_ex?
 module_ex?
 module_ex??
 oper_overload_ex?
@@ -47,6 +48,7 @@ struct_ex?
 switch_ex?
 template_ex?
 template_ex??
+vector_ex?
 
 # swap files
 *.swp
