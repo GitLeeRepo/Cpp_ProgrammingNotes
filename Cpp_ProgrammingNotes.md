@@ -16,7 +16,9 @@ Notes on the C++ programming language
 
 # Concepts and Terminology
 
-TBD
+For object oriented concepts and terminology refer to the [Classes & Object-Oriented-Programming](https://github.com/GitLeeRepo/Cpp_ProgrammingNotes/blob/master/Cpp_ProgrammingNotes.md#classes--object-oriented-programming) section
+
+* **Translation Unit** - the unit of code that is translated into a single object file, tyically a single \*.cpp file and its header files.  That \*.cpp file will then typically refer to code in another translation unit containing its owin \*.cpp file and headers.  The header files will often be shared across translation units. 
 
 # Built-in Data Types
 
