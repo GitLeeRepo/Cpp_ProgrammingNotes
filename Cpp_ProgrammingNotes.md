@@ -421,22 +421,11 @@ int main() {
 }
 ```
 
-## Pointers and Pointer Arithmetic
-
-### nullptr
-
-A  **nullptr** should be used in comparisons rather than the older **NULL** when making comparisons or assignments since it makes it clear that you are dealing with pointer values rather than integer.  It is also a keyword that is part of the language rather than a precompliler define for zero.
-
-```c++
-int* ptr = nullptr;
-...
-if (ptr == nullptr)
-   return 0;
-```
+## Pointers and References
 
 ### References vs Pointers
 
-A reference is similar to a pointer but you don't need to dereference the variable with a **\*** prefix, and once set a reference can not be changed to point to something else (you can't use pointer arithmetic on them).  Because references cannot be changed, they can only be set at initialzation time.  References are aliases, another way to refer to the same thing.  They are also used in parameter signatures to allow variables to be passed by reference rather than by value, or initialized when from a function whose return value is a reference.
+A reference is similar to a pointer but you don't need to dereference the variable with a **\*** prefix, and once set a reference can not be changed to reference something else (you can't use pointer arithmetic on them).  Because references cannot be changed, they can only be set at initialzation time, similar to a constant, but with different requirements and rules.  References are aliases, another way to refer to the same thing.  They are also used in parameter signatures to allow variables to be passed by reference rather than by value, or initialized when from a function whose return value is a reference.
 
 This example shows some of the things that are allowed and not allowed with references
 ```c++
@@ -461,6 +450,17 @@ This example shows some of the things that are allowed and not allowed with refe
     
     for (; *ptr != 3; ptr++ )
         cout << *ptr << endl;
+```
+
+### nullptr
+
+A  **nullptr** should be used in comparisons rather than the older **NULL** when making comparisons or assignments since it makes it clear that you are dealing with pointer values rather than integer.  It is also a keyword that is part of the language rather than a precompliler define for zero.
+
+```c++
+int* ptr = nullptr;
+...
+if (ptr == nullptr)
+   return 0;
 ```
 
 # Memory Allocation and Deallocation
