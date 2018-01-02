@@ -1597,10 +1597,10 @@ int main() {
 Some of the standard library classes include:
 
 * vector - resizable array
-* map - a dictionar/hash table data structure
+* map - a dictionary/hash table data structure
 * **list** - a double linked list data structure
 * **queue**, **dequeue** - FIFO data structure
-* **set** - mathmatical set with operations like union and difference
+* **set** - mathematical set with operations like union and difference
 
 ## Vector
 
@@ -1696,7 +1696,7 @@ int main() {
     }
 
     // locate by key using find
-    auto found = m2.find(2);  // returns an interator, just as begin & end do
+    auto found = m2.find(2);  // returns an iterator, just as begin & end do
     cout << "Found: " << found->second.name << endl;
 
     // better yet locate by using key as an index
