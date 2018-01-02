@@ -421,9 +421,9 @@ int main() {
 }
 ```
 
-## Pointers and References
+# Pointers and References
 
-### References vs Pointers
+## References vs Pointers
 
 A reference is similar to a pointer but you don't need to dereference the variable with a **\*** prefix, and once set a reference can not be changed to reference something else (you can't use pointer arithmetic on them).  Because references cannot be changed, they can only be set at initialzation time, similar to a constant, but with different requirements and rules.  References are aliases, another way to refer to the same thing.  They are also used in parameter signatures to allow variables to be passed by reference rather than by value, or initialized when from a function whose return value is a reference.
 
@@ -442,7 +442,7 @@ This example shows some of the things that are allowed and not allowed with refe
     int& refInt = myInt;              // reference to basic type is allowed
 ```
 
-### Pointer Arithmetic using Increment Operator
+## Pointer Arithmetic using Increment Operator
 
 ```c++
     int ar[] = { 1, 2, 3 };
@@ -452,7 +452,25 @@ This example shows some of the things that are allowed and not allowed with refe
         cout << *ptr << endl;
 ```
 
-### nullptr
+## Arrow Operator (->)
+
+The arrows operator (->) provides a convenient means of dereferencing members in objects over other alternatives, for example:
+
+```c++
+MyClass myClass;  // using default constructor
+MyClass* myClassPtr = &myClass;
+
+// reference to member on non-pointer version
+cout << myClass.getName() << endl;
+
+// reference to member from pointer version could do this to dereference
+cout << (*myClassPtr).getName() << endl;
+
+// but the arrow operator provides a better option
+cout << myClassPtr->getName() << endl;
+```
+
+## nullptr
 
 A  **nullptr** should be used in comparisons rather than the older **NULL** when making comparisons or assignments since it makes it clear that you are dealing with pointer values rather than integer.  It is also a keyword that is part of the language rather than a precompliler define for zero.
 
