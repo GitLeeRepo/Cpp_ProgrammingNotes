@@ -425,7 +425,7 @@ int main() {
 
 ### nullptr
 
-A  **nullptr** should be used in comparisons rather than the older **NULL** when making comparisons or assignments since it makes it clear that you are dealing with pointer values rather than integer.
+A  **nullptr** should be used in comparisons rather than the older **NULL** when making comparisons or assignments since it makes it clear that you are dealing with pointer values rather than integer.  It is also a keyword that is part of the language rather than a precompliler define for zero.
 
 ```c++
 int* ptr = nullptr;
@@ -436,7 +436,22 @@ if (ptr == nullptr)
 
 ### References vs Pointers
 
-A reference is similar to a pointer but you don't need to dereference the variable with a **\*** prefix
+A reference is similar to a pointer but you don't need to dereference the variable with a **\*** prefix, and once set a reference can not be changed to point to something else (you can't use pointer arithmetic on them).  Because references cannot be changed, they can only be set at initialzation time.  References are aliases, another way to refer to the same thing.  They are also used in parameter signatures to allow variables to be passed by reference rather than by value, or initialized when from a function whose return value is a reference.
+
+This example shows some of the things that are allowed and not allowed with references
+```c++
+    int myInt = 5;
+    int ar[] = { 1, 2, 3 };
+    MyClass myClass;
+    MyClass* myClassPtr = new MyClass();
+
+    int* ptr = ar;                    // pointer to the array allowed
+    //int& ref = ar;                  // not allowed it requires pointer math / indexing for elements
+    int& ref = ar[0];                 // this is ok, it is a reference to a single element of the array
+    Test& refClass = myClass;         // reference to non-dynamic class ok
+    //Test& refClassPtr = myClassPtr; // not allowed, would require pointer dereferencing (->member)
+    int& refInt = myInt;              // reference to basic type is allowed
+```
 
 ### Pointer Arithmetic using Increment Operator
 
