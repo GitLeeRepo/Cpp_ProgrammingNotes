@@ -481,6 +481,13 @@ if (ptr == nullptr)
    return 0;
 ```
 
+## Differences between lvalue and rvalue
+
+Not specifically a pointer and reference topic, but you sometimes see issues regarding them (particularly rvalues).
+
+A C++ expression is either an lvalue or an rvalue. An lvalue has a name, such as a variable or const variable (but not a preprocessor constant which expands into a literal), that has a value that persists beyond a single expression.  An rvalue, such as a literal (1 + 5, or "test") is only used in a single expression, although its results can be stored in an lvalue variable.  Just remember that lvalues can exist on the left side of an assignment operator, and therefore be be assigned to, whereas an rvalue can not be assigned to, and will only appear on the left side of an assignment if it is used as something such as an index to an lvalue. 
+
+
 # Memory Allocation and Deallocation
 
 C++ uses the **new** operator to allocate memory from the **free store**, a.k.a, the **heap** or more generally **dynamic memory**.  The **new** operator should generally be used to allocate memory rather than C's **malloc**.
