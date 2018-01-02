@@ -490,6 +490,21 @@ if (ptr == nullptr)
    return 0;
 ```
 
+## Const Pointers and Pointers to Const
+
+```c++
+    int myInt1 = 10;
+    int myInt2 = 5;
+    
+    const int* cIntPtr = &myInt1;     // pointer to const
+    //*cIntPtr = 8;                   // can't change the value
+    cIntPtr = &myInt2;                // but you can change what it points to
+    
+    int* const intConstPtr = &myInt;  // const pointer
+    *intConstPtr = 7;                 // you can change to value
+    //intConstPtr = &myInt2;          // but you can't change what it points to
+```
+
 ## Differences between lvalue and rvalue
 
 Not specifically a pointer and reference topic, but you sometimes see issues regarding them (particularly rvalues).
