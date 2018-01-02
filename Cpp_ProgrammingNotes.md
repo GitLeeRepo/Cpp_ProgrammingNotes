@@ -51,7 +51,9 @@ char mychar3 = {x}; // compile warning, since x is an integer with the potential
 
 ## Fundamental Data Type Sizes and Limits
 
-From the output of the program in the following section.  Shows the size in bytes of these data types and their min max limits as they are found on a 64 bit Linux system.  It also shows the number of significant digits for float and double.
+One issue with C++, particularly with the integer types, is that their sizes are not standardized across compilers and platforms.  If you need to write cross platform code you should seriously consider using the integer types defined in **\<cstdint>**, such as **int8_t, int16_t, int32_t, int64_t**
+
+From the output of the program in the following section.  Shows the size in bytes of these data types and their min max limits as they are found on a 64 bit Linux system, in which char corresponds to int8_t, short to int16_t, int to int32_t, and long to int64_t.  On a Windows system long corresponds to int32_t and you have to use long long for int64_t.  This program output also shows the number of significant digits for float and double, again particular to a 64 bit linux system, although there tends to be less discrepency with floating point types than there are with integer types.
 
 ```bash
        Size of bool: 1
@@ -186,7 +188,7 @@ auto z = 1.8e18L;    // z becomes a long double
 
 ## Compound Type - Array
 
-In general the Vector class in the C++ standard library should be chosen over the C style array illustrated here, since the Vector class can guard against out of bounds conditions (buffer overflows) and can be resized.
+In general the vector class in the C++ standard library should be chosen over the C style array illustrated here, since the Vector class can guard against out of bounds conditions (buffer overflows) and can be resized.  The older C style arrays are essentially pointers, in which the array name can be dereferenced using '\*' which gives you the first elememnt of the array.  One of the issues with arrays, in addition to buffer overflows which are are security concern, is that there is no concept of the size of an array (agaom it essentially is just a pointer.  Therefore whenever you pass an array to a function you must also pass the the size of the array so that you won't exceed its bounds.  Short of using a vector class, C++ does provide a wrapper for the C style array, namely the std::array, for which you are given a fixed length array that does have a size() member function.
 
 ```c++
 #include <iostream>
@@ -238,6 +240,8 @@ Two primary string types in C++:
 * String Class
 
 ### C Style Strings
+
+In general, you should avoid using C style strings and instead use the std::string class provided by the standard library.  If you need a C style string and are using the string class you can use the c_str() member function.
 
 ```c++
 #include <iostream>
