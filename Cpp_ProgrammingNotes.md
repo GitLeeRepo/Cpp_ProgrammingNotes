@@ -53,7 +53,7 @@ char mychar3 = {x}; // compile warning, since x is an integer with the potential
 
 One issue with C++, particularly with the integer types, is that their sizes are not standardized across compilers and platforms.  If you need to write cross platform code you should seriously consider using the integer types defined in **\<cstdint>**, such as **int8_t, int16_t, int32_t, int64_t**
 
-From the output of the program in the following section.  Shows the size in bytes of these data types and their min max limits as they are found on a 64 bit Linux system, in which char corresponds to int8_t, short to int16_t, int to int32_t, and long to int64_t.  On a Windows system long corresponds to int32_t and you have to use long long for int64_t.  This program output also shows the number of significant digits for float and double, again particular to a 64 bit linux system, although there tends to be less discrepency with floating point types than there are with integer types.
+From the output of the program in the following section.  Shows the size in bytes of these data types and their min max limits as they are found on a 64 bit Linux system, in which char corresponds to int8_t, short to int16_t, int to int32_t, and long to int64_t.  On a Windows system long corresponds to int32_t and you have to use long long for int64_t.  This program output also shows the number of significant digits for float and double, again particular to a 64 bit linux system, although there tends to be less discrepancy with floating point types than there are with integer types.
 
 ```bash
        Size of bool: 1
@@ -188,7 +188,7 @@ auto z = 1.8e18L;    // z becomes a long double
 
 ## Compound Type - Array
 
-In general the vector class or std:array class in the C++ standard library should be chosen over the C style array illustrated here, the bector class can guard against out of bounds conditions (buffer overflows) and can be resized, the std::array class is for fixed length arrays.  The older C style arrays are essentially pointers, in which the array name can be dereferenced using '\*' which gives you the first elememnt of the array.  One of the issues with arrays, in addition to buffer overflows which are are security concern, is that there is no concept of the size of an array (agaom it essentially is just a pointer.  Therefore whenever you pass an array to a function you must also pass the the size of the array so that you won't exceed its bounds.  Short of using a vector class, C++ does provide a wrapper for the C style array, namely the std::array, for which you are given a fixed length array that does have a size() member function.
+In general the vector class or std:array class in the C++ standard library should be chosen over the C style array illustrated here, the vector class can guard against out of bounds conditions (buffer overflows) and can be resized, the std::array class is for fixed length arrays.  The older C style arrays are essentially pointers, in which the array name can be dereferenced using '\*' which gives you the first element of the array.  One of the issues with arrays, in addition to buffer overflows which are are security concern, is that there is no concept of the size of an array (again it essentially is just a pointer.  Therefore whenever you pass an array to a function you must also pass the the size of the array so that you won't exceed its bounds.  Short of using a vector class, C++ does provide a wrapper for the C style array, namely the std::array, for which you are given a fixed length array that does have a size() member function.
 
 ```c++
 #include <iostream>
@@ -374,7 +374,7 @@ int main() {
 
 ## Compound Type - Structure
 
-A struct in C++ is the same as a class, differing only in that by default access to its members are public rather than private.  The example here is a simple POD (plain old data) C style struct, without any constructors or member functions explicitly defined.  Keep in mind though, under the hood it is still a class, so for example, even though a constructor is not explictly defined here, there is a default constructor that is automatically defined for you when you don't explictly define one.  To see an example of this type of POD type of struct, refer to the [struct_ex1.cpp](https://github.com/GitLeeRepo/Cpp_ProgrammingNotes/blob/master/basics/struct_ex1.cpp) file in the repository here, which also illustrates various technique for allocating memory for it.
+A struct in C++ is the same as a class, differing only in that by default access to its members are public rather than private.  The example here is a simple POD (plain old data) C style struct, without any constructors or member functions explicitly defined.  Keep in mind though, under the hood it is still a class, so for example, even though a constructor is not explicitly defined here, there is a default constructor that is automatically defined for you when you don't explicitly define one.  To see an example of this type of POD type of struct, refer to the [struct_ex1.cpp](https://github.com/GitLeeRepo/Cpp_ProgrammingNotes/blob/master/basics/struct_ex1.cpp) file in the repository here, which also illustrates various technique for allocating memory for it.
 
 ```c++
 enum Gender { male = 'M', female = 'F' };
