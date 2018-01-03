@@ -374,58 +374,18 @@ int main() {
 
 ## Compound Type - Structure
 
-The following example shows the creation of a structure on the stack, along with an array of dynamically allocated structures stored on the heap.  It also uses an enum.  Note that the **. (dot)** is used to access the non-dynamic structure and the **->** operator is used to access members dynamically allocated.
+A struct in C++ is the same as a class, differing only in that by default access to its members are public rather than private.  The example here is a simple POD (plain old data) C style struct, without any constructors or member functions explicitly defined.  Keep in mind though, under the hood it is still a class, so for example, even though a constructor is not explictly defined here, there is a default constructor that is automatically defined for you when you don't explictly define one.  To see an example of this type of POD type of struct, refer to the [struct_ex1.cpp](https://github.com/GitLeeRepo/Cpp_ProgrammingNotes/blob/master/basics/struct_ex1.cpp) file in the repository here, which also illustrates various technique for allocating memory for it.
 
 ```c++
-#include <iostream>
-#include <cstring>
-
 enum Gender { male = 'M', female = 'F' };
 
+// more of a C style POD (plain old data) type of struct (no member functions)
+// but it does use a newer C++ style string rather than C style string
 struct Person {
-    char name[30];
+    string name;
     int age;
     Gender gender;
 };
-
-// dynamically allocate a new person
-Person *addPerson(const char name[], int age, Gender gender) {
-    Person *person = new Person;
-
-    strcpy(person->name, name);
-    person->age = age;
-    person->gender = gender;
-    return person;
-}
-
-int main() {
-    using namespace std;
-
-    // create a person on the local stack
-    Person person;
-    strcpy(person.name, "Billy Bob");
-    person.age = 33;
-    person.gender = male;
-
-    cout << person.name << endl;
-    cout << person.age << endl;
-    cout << (person.gender == male ? "Male" : "Female") << endl;
-    cout << endl;
-
-    // create an array of dynamically created persons
-    Person *persons[3];
-    persons[0] = addPerson("Cindy Mindi", 22, female);
-    persons[1] = addPerson("Mikey Likey", 42, male);
-    persons[2] = addPerson("Mary Harry", 63, female);
-
-    for (int i = 0; i < 3; i++) {
-        cout << persons[i]->name << endl;
-        cout << persons[i]->age << endl;
-        cout << (persons[i]->gender == male ? "Male" : "Female") << endl;
-        cout << endl;
-    }
-    return 0;
-}
 ```
 
 # Pointers and References
