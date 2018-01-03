@@ -866,6 +866,10 @@ int main() {
 }
 ```
 
+## Inline Functions
+
+To tell the compiler you want a function to be inline precede the function declaration with the keyword **inline**.  This is done so that the function is placed inline where the call is being made, eliminating the function call overhead of passing and returning variables on the stack.  This make sense for very simple functions in which the overhead of a function call is high compared to the time the function itself takes to run, or for functions called repeatedly in loops.  Keep in mind that the compiler itself will make some functions inline on its own as part of its optimization process.
+
 **Output:**
 
 ```
