@@ -36,7 +36,12 @@ private:
     int currentBalance;
 };
 
-class Field {
+class Entity {
+public:
+    Entity() {}
+};
+
+class Field : public Entity {
 public:
     Field() {}
     Field(std::string fieldName, int acres, int purchasePrice) 
@@ -98,7 +103,7 @@ private:
 };
 
 
-class Farm {
+class Farm : public Entity {
 public:
     Farm() {
         FieldStatus fieldStatus = empty;
