@@ -4,6 +4,11 @@ By default the notes in the main [Cpp_ProgrammingNotes](https://github.com/GitLe
 
 # References
 
+## My Other Notes
+
+* [Cpp_ProgrammingNotes](https://github.com/GitLeeRepo/Cpp_ProgrammingNotes/blob/master/Cpp_ProgrammingNotes.md#overview)
+* [VisusualStudioNotes](https://github.com/GitLeeRepo/VisualStudioNotes/blob/master/VisusualStudioNotes.md#overview)
+
 # Standards
 
 By default vs C++ is using C++14 standard, with C++17 and the the latest versions available as options available under "C++ Language Standard" on the project properties.
