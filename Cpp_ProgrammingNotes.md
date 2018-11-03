@@ -452,7 +452,7 @@ Refer to the **Memory Management using Smart Pointers** in the **Memory Manageme
 
 ## nullptr
 
-A  **nullptr** should be used in comparisons rather than the older **NULL** when making comparisons or assignments since it makes it clear that you are dealing with pointer values rather than integer.  It is also a keyword that is part of the language rather than a precompiler define for zero.
+A  **nullptr** should be used in comparisons rather than the older **NULL** when making comparisons or assignments since it makes it clear that you are dealing with pointer values rather than integer.  It is also a keyword that is part of the language rather than a pre-compiler define for zero.
 
 ```c++
 int* ptr = nullptr;
@@ -1640,7 +1640,7 @@ int main() {
     // uses transform which creates a new vector from the first using the
     // return value (the square of the values) from the lambda.  Note the return
     // value is not explicitly provided since the compiler can figure it out.
-    // The for_each function then uses another lamda to print the results
+    // The for_each function then uses another lambda to print the results
     vector<int> retV;
     transform(v.begin(), v.end(), back_inserter(retV), [](int n) { return n * n; } );
     for_each(retV.begin(), retV.end(), [] (int n) { cout << n << "  "; } );
