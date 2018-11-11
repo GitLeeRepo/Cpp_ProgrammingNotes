@@ -7,7 +7,7 @@ By default the notes in the main [Cpp_ProgrammingNotes](https://github.com/GitLe
 ## My Other Notes
 
 * [Cpp_ProgrammingNotes](https://github.com/GitLeeRepo/Cpp_ProgrammingNotes/blob/master/Cpp_ProgrammingNotes.md#overview)
-* [VisusualStudioNotes](https://github.com/GitLeeRepo/VisualStudioNotes/blob/master/VisusualStudioNotes.md#overview)
+* [VisualStudioNotes](https://github.com/GitLeeRepo/VisualStudioNotes/blob/master/VisusualStudioNotes.md#overview)
 
 # Standards
 
